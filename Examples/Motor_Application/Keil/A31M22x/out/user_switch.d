@@ -1,0 +1,16 @@
+.\out\user_switch.o: user_Switch.c
+.\out\user_switch.o: user_Switch.h
+.\out\user_switch.o: ..\..\..\..\Drivers\A31M22x\include\A31M22x_pcu.h
+.\out\user_switch.o: ..\..\..\..\Core\Device\ABOV\A31M22x\Include\A31M22x.h
+.\out\user_switch.o: ..\..\..\..\Core\CMSIS\Cortex_M0P\Include\core_cm0plus.h
+.\out\user_switch.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\out\user_switch.o: ..\..\..\..\Core\CMSIS\Cortex_M0P\Include\core_cmInstr.h
+.\out\user_switch.o: ..\..\..\..\Core\CMSIS\Cortex_M0P\Include\cmsis_armcc.h
+.\out\user_switch.o: ..\..\..\..\Core\CMSIS\Cortex_M0P\Include\core_cmFunc.h
+.\out\user_switch.o: ..\..\..\..\Core\Device\ABOV\A31M22x\Include\a31m22x_system.h
+.\out\user_switch.o: ..\..\..\..\Drivers\A31M22x\include\aa_types.h
+.\out\user_switch.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\out\user_switch.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+.\out\user_switch.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
+.\out\user_switch.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+.\out\user_switch.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\inttypes.h

@@ -1,0 +1,16 @@
+.\out\fault_indication.o: Fault_indication.c
+.\out\fault_indication.o: Fault_indication.h
+.\out\fault_indication.o: ..\..\..\..\Drivers\A31M22x\include\A31M22x_pcu.h
+.\out\fault_indication.o: ..\..\..\..\Core\Device\ABOV\A31M22x\Include\A31M22x.h
+.\out\fault_indication.o: ..\..\..\..\Core\CMSIS\Cortex_M0P\Include\core_cm0plus.h
+.\out\fault_indication.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\out\fault_indication.o: ..\..\..\..\Core\CMSIS\Cortex_M0P\Include\core_cmInstr.h
+.\out\fault_indication.o: ..\..\..\..\Core\CMSIS\Cortex_M0P\Include\cmsis_armcc.h
+.\out\fault_indication.o: ..\..\..\..\Core\CMSIS\Cortex_M0P\Include\core_cmFunc.h
+.\out\fault_indication.o: ..\..\..\..\Core\Device\ABOV\A31M22x\Include\a31m22x_system.h
+.\out\fault_indication.o: ..\..\..\..\Drivers\A31M22x\include\aa_types.h
+.\out\fault_indication.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\out\fault_indication.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+.\out\fault_indication.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
+.\out\fault_indication.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+.\out\fault_indication.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\inttypes.h

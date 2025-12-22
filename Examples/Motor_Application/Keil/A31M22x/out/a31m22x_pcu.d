@@ -1,0 +1,10 @@
+.\out\a31m22x_pcu.o: ..\..\..\..\Drivers\A31M22x\source\a31m22x_pcu.c
+.\out\a31m22x_pcu.o: ..\..\..\..\Drivers\A31M22x\include\A31M22x_pcu.h
+.\out\a31m22x_pcu.o: ..\..\..\..\Core\Device\ABOV\A31M22x\Include\A31M22x.h
+.\out\a31m22x_pcu.o: ..\..\..\..\Core\CMSIS\Cortex_M0P\Include\core_cm0plus.h
+.\out\a31m22x_pcu.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\out\a31m22x_pcu.o: ..\..\..\..\Core\CMSIS\Cortex_M0P\Include\core_cmInstr.h
+.\out\a31m22x_pcu.o: ..\..\..\..\Core\CMSIS\Cortex_M0P\Include\cmsis_armcc.h
+.\out\a31m22x_pcu.o: ..\..\..\..\Core\CMSIS\Cortex_M0P\Include\core_cmFunc.h
+.\out\a31m22x_pcu.o: ..\..\..\..\Core\Device\ABOV\A31M22x\Include\a31m22x_system.h
+.\out\a31m22x_pcu.o: ..\..\..\..\Drivers\A31M22x\include\aa_types.h

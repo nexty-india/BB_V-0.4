@@ -1,0 +1,10 @@
+.\out\a31m22x_system.o: ..\..\..\..\Core\Device\ABOV\A31M22x\source\a31m22x_system.c
+.\out\a31m22x_system.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\out\a31m22x_system.o: ..\..\..\..\Core\Device\ABOV\A31M22x\Include\a31m22x.h
+.\out\a31m22x_system.o: ..\..\..\..\Core\CMSIS\Cortex_M0P\Include\core_cm0plus.h
+.\out\a31m22x_system.o: ..\..\..\..\Core\CMSIS\Cortex_M0P\Include\core_cmInstr.h
+.\out\a31m22x_system.o: ..\..\..\..\Core\CMSIS\Cortex_M0P\Include\cmsis_armcc.h
+.\out\a31m22x_system.o: ..\..\..\..\Core\CMSIS\Cortex_M0P\Include\core_cmFunc.h
+.\out\a31m22x_system.o: ..\..\..\..\Core\Device\ABOV\A31M22x\Include\a31m22x_system.h
+.\out\a31m22x_system.o: ..\..\..\..\Drivers\A31M22x\include\a31m22x_cfmc.h
+.\out\a31m22x_system.o: ..\..\..\..\Drivers\A31M22x\include\aa_types.h

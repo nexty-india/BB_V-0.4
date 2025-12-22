@@ -1,0 +1,15 @@
+.\out\a31m22x_initclock.o: ..\..\A31M22x_initclock.c
+.\out\a31m22x_initclock.o: ..\..\..\..\Core\Device\ABOV\A31M22x\Include\A31M22x.h
+.\out\a31m22x_initclock.o: ..\..\..\..\Core\CMSIS\Cortex_M0P\Include\core_cm0plus.h
+.\out\a31m22x_initclock.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\out\a31m22x_initclock.o: ..\..\..\..\Core\CMSIS\Cortex_M0P\Include\core_cmInstr.h
+.\out\a31m22x_initclock.o: ..\..\..\..\Core\CMSIS\Cortex_M0P\Include\cmsis_armcc.h
+.\out\a31m22x_initclock.o: ..\..\..\..\Core\CMSIS\Cortex_M0P\Include\core_cmFunc.h
+.\out\a31m22x_initclock.o: ..\..\..\..\Core\Device\ABOV\A31M22x\Include\a31m22x_system.h
+.\out\a31m22x_initclock.o: ..\..\..\..\Drivers\A31M22x\include\A31M22x_scu.h
+.\out\a31m22x_initclock.o: ..\..\..\..\Drivers\A31M22x\include\a31m22x_driver_common.h
+.\out\a31m22x_initclock.o: ..\..\..\..\Drivers\A31M22x\include\A31M22x_pcu.h
+.\out\a31m22x_initclock.o: ..\..\..\..\Drivers\A31M22x\include\aa_types.h
+.\out\a31m22x_initclock.o: ..\..\..\..\Drivers\A31M22x\include\A31M22x_cfmc.h
+.\out\a31m22x_initclock.o: ..\..\A31M22x_initclock.h
+.\out\a31m22x_initclock.o: ..\..\MotorApplicationLayer.h

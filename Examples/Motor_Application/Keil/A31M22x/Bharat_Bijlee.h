@@ -1,0 +1,373 @@
+#ifndef _USER_BHARAT_BIJLEE_H_
+#define _USER_BHARAT_BIJLEE_H_
+
+
+#include <string.h>
+#include <stdio.h>
+#include <stdarg.h>
+#include <stdlib.h>
+#include <inttypes.h>
+#include <stdarg.h>
+#include "Define.h"
+#include <stdbool.h>
+
+typedef struct{
+	char PRODUCT_NAME;
+	char MODEL_NAME;
+	uint16_t REFERENCE_TYPE;
+	uint64_t MACHINE_NUMBER;
+	char MANUFACTURE;
+	char MANUFACTURE_URL;
+}ELECTRIC_MOTOR_t;
+
+typedef struct{
+	char PRODUCT_NAME;
+	char MODEL_NAME;
+	uint16_t REFERENCE_TYPE;
+	uint64_t MACHINE_NUMBER;
+	char MANUFACTURE;
+	char MANUFACTURE_URL;
+}SOFTWARE_VERSION_t;
+
+typedef struct{
+	char PRODUCT_NAME;
+	char MODEL_NAME;
+	uint16_t REFERENCE_TYPE;
+	uint64_t MACHINE_NUMBER;
+	char MANUFACTURE;
+	char MANUFACTURE_URL;
+}EC_DRIVE_t;
+
+
+typedef struct{
+	ELECTRIC_MOTOR_t electric_motor;
+	SOFTWARE_VERSION_t software_version;
+	EC_DRIVE_t ec_drive;
+}EC_DEVICE_DATA_t;   //-----------------------  (1)
+
+
+typedef struct{
+	uint16_t INPUT_VOLTAGE_SOURCE;
+	uint16_t MAXIMUM_OUTPUT_POWER;
+	uint16_t MAXIMUM_RATING_CURRENT;
+	uint16_t FREQUENCY_RANGE;
+	uint16_t OVERLOAD_PROTECTION;
+	uint16_t THERMAL_PROTECTION;
+	uint16_t SWITCHING_FREQUENCY;
+}DRIVE_SPECIFICATION_t; //------------------------  (2)
+
+typedef struct{
+	uint16_t POWER_RATING;
+	uint16_t POWER_FACTOR;
+	uint16_t OPERATING_VOLTAGE;
+	uint16_t RATED_CURRENT;
+	uint16_t FREQUENCY;
+	uint16_t MOTOR_POLE;
+	uint16_t RATED_RPM;
+	uint16_t RATED_TORQUE;
+	uint16_t ROTATIONAL_DIRECTION;
+}MOTOR_SPECIFICATION_t;  //---------------------------- (3)
+
+
+//typedef struct{
+//	bool PID_Flag;
+//	bool MODBUS_FLAG;
+//	bool ANALOG_FLAG;
+//	bool BMS_Flag;
+//}SPEED_CONTROL_FLAG_t;	//-------------------------- (4)
+
+typedef struct{
+	uint16_t SET_VALUE;
+	uint16_t ACTUAL_VALUE;
+	uint16_t UPPER_LIMIT;
+	uint16_t LOWER_LIMIT;
+	uint16_t MAX_SPEED;
+	uint16_t MIN_SPEED;
+	uint16_t TREND;
+}DIFFERENTIAL_PRESSURE_t;
+
+typedef struct{
+	uint16_t SET_VALUE;
+	uint16_t ACTUAL_VALUE;
+	uint16_t UPPER_LIMIT;
+	uint16_t LOWER_LIMIT;
+	uint16_t MAX_SPEED;
+	uint16_t MIN_SPEED;
+	uint16_t TREND;
+}DIFFERENTIAL_TEMPERATURE_t;
+
+typedef struct{
+	uint16_t SET_VALUE;
+	uint16_t ACTUAL_VALUE;
+	uint16_t UPPER_LIMIT;
+	uint16_t LOWER_LIMIT;
+	uint16_t MAX_SPEED;
+	uint16_t MIN_SPEED;
+	uint16_t TREND;
+}FLOW_RATE_t;
+
+
+
+
+
+
+
+
+
+
+typedef struct{
+	bool OVER_TEMPERATURE;
+	bool LINE_FAULT;
+	bool MOTOR_BLOCKED;
+	bool IGBT_FAULT;
+	bool DC_UNDER_VOLTAGE;
+	bool DC_OVER_VOLTAGE;
+	bool LINE_UNDER_VOLTAGE;
+	bool LINE_OVER_VOLTAGE;
+	bool PEAK_CURRENT;
+	bool OVERLOAD;
+	bool OVERHEATING_WINDING;
+}FAILURE_PROTECTION_t;
+
+
+
+
+typedef struct{
+	uint16_t NODE_ADDRESS;
+	uint16_t BAUD_RATE;
+	uint16_t PARITY_SET;
+	uint16_t STOP_BIT;
+	uint16_t CONTROL_MODE;
+	uint16_t SET_SPEED_IN_MODBUS_SIGNAL_LOSS_MODE;
+	uint16_t SET_SPEED_IN_FIRE_ALARAM_MODE;
+	uint16_t MAXIMUM_SPEED;
+	uint16_t TARGET_SPEED_FROM_MODBUS;
+	uint16_t FAN_ROTATION;
+	uint16_t RAMP_UP_TIME;
+	uint16_t RAMP_DOWN_TIME;
+	uint16_t FIRE_ALARM_MODE_SOURCE;
+	uint16_t FIRE_ALARM_ACTIVATE;
+	uint16_t DI1_FUNCTION;
+	uint16_t DI2_FUNCTION;
+	uint16_t SET_FILTER_RUN_HOURS;
+	uint16_t RESET_FILTER_RUN_HOURS;
+	uint16_t AI1_MINIMUM_VALUE;
+	uint16_t SWITCHING_FREQUENCY;
+	uint16_t AI1_MAXIMUM_VALUE;
+	uint16_t PID_SENSOR_SELECT;
+	uint16_t RESERVED_23;
+	uint16_t RESERVED_24;
+	uint16_t RESERVED_25;
+	uint16_t RESERVED_26;
+	uint16_t RESERVED_27;
+	uint16_t RESERVED_28;
+	uint16_t RESERVED_29;
+	uint16_t RESERVED_30;
+	uint16_t SET_DEFAULT_FACTORY;
+	uint16_t RESERVED_32;
+	uint16_t RESERVED_33;
+	uint16_t RESERVED_34;
+	uint16_t RESERVED_35;
+	uint16_t RESERVED_36;
+	uint16_t RESERVED_37;
+	uint16_t RESERVED_38;
+	uint16_t RESERVED_39;
+	uint16_t RESERVED_40;
+	uint16_t RESERVED_41;
+	uint16_t RESERVED_42;
+	uint16_t RESERVED_43;
+	uint16_t RESERVED_44;
+	uint16_t RESERVED_45;
+	uint16_t RESERVED_46;
+	uint16_t BMS_FUNCTION;
+	uint16_t SUPPRESSION_RANGE_SETTING;
+	uint16_t RANGE_1_MIN_SPEED;
+	uint16_t RANGE_1_MAX_SPEED;
+	uint16_t RANGE_2_WINDING_MIN_TEMPERATUE;
+	uint16_t RANGE_2_WINDING_MAX_TEMPERATUE;
+	uint16_t RANGE_3_MIN_CURRENT;
+	uint16_t RANGE_3_MAX_CURRENT;
+	uint16_t PID_CONFIGURATION_DIFFERENTIAL_PRESSURE_SET_VALUE;
+	uint16_t DIFFERENTIAL_PRESSURE_RANGE_MIN;
+	uint16_t DIFFERNETIAL_PRESEURE_RANGE_MAX;
+	uint16_t PRESSURE_SPEED_MIN;
+	uint16_t PRESSURE_SPEED_MAX;
+	uint16_t PID_CONFIGURATION_DIFFERNETIAL_TEMPERAUTE_SET_VALUE;
+	uint16_t RESERVED_61;
+	uint16_t RESERVED_62;
+	uint16_t DIFFERNTIAL_TEMPERATURE_SPEED_MIN;
+	uint16_t DIFFERNTIAL_TEMPERATURE_SPEED_MAX;
+	uint16_t PID_CONFIGURE_FLOW_RATE_SET_VALUE;
+	uint16_t FLOW_RATE_RANGE_MIN;
+	uint16_t FLOW_RATE_RANGE_MAX;
+	uint16_t FLOW_SPEED_MIN;
+	uint16_t FLOW_SPEED_MAX;
+	uint16_t K1_FUNCTION;
+	uint16_t SET_INTERNAL_1;
+	uint16_t SET_INTERNAL_2;
+	uint16_t SET_INTERNAL_3;
+	uint16_t MIN_SPEED;
+	uint16_t RESERVED_75;
+	uint16_t CONTROL_BITS;
+	uint16_t RESERVED_77;
+	uint16_t LED_MODE;
+	uint16_t RESERVED_79;
+	uint16_t RESERVED_80;
+	uint16_t RESERVED_81;
+	uint16_t RESERVED_82;
+	uint16_t RESERVED_83;
+	uint16_t RESERVED_84;
+	uint16_t RESERVED_85;
+	uint16_t RESERVED_86;
+	uint16_t RESERVED_87;
+	uint16_t RESERVED_88;
+	uint16_t RESERVED_89;
+	uint16_t BLOCKING_PROTECTION_CHANGE_OF_DIRECTION;
+	uint16_t RESERVED_91;
+	uint16_t RESET;
+	uint16_t ANTI_LOCK_RETIES_ROTOR_LOCK;
+	uint16_t SYSTEM_DESIGNER;
+	uint16_t END_CUSTOMER;
+	uint16_t SENSOR_PRESSURE_UNIT;
+	uint16_t SENSOR_TEMPERATURE_UNIT;
+	uint16_t SENSOR_FLOW_UNIT;
+	uint16_t	RESERVED_99;
+	uint16_t	RESERVED_100;
+	uint16_t	RESERVED_101;
+	uint16_t SYSTEM_ADMINISTRATOR;
+	uint16_t RESERVED_103;
+	uint16_t MOTOR_MODEL_NAME_104;
+	uint16_t MOTOR_MODEL_NAME_105;
+	uint16_t MOTOR_MODEL_NAME_106;
+	uint16_t MOTOR_MODEL_NAME_107;
+	uint16_t MOTOR_MODEL_NAME_108;
+	uint16_t MOTOR_MODEL_NAME_109;
+	uint16_t MOTOR_MODEL_NAME_110;
+	uint16_t MOTOR_MODEL_NAME_111;
+	uint16_t MOTOR_MACHINE_NUMBER_112;
+	uint16_t MOTOR_MACHINE_NUMBER_113;
+	uint16_t MOTOR_MACHINE_NUMBER_114;
+	uint16_t MOTOR_MACHINE_NUMBER_115;
+	uint16_t MOTOR_MACHINE_NUMBER_116;
+	uint16_t MOTOR_MACHINE_NUMBER_117;
+	uint16_t MOTOR_PRODUCTION_YEAR;
+	uint16_t MOTOR_PRODUCTION_MONTH;
+	uint16_t MOTOR_PRODUCTION_DAY;
+	uint16_t MODEL_NAME_121;
+	uint16_t MODEL_NAME_122;
+	uint16_t MODEL_NAME_123;
+	uint16_t MODEL_NAME_124;
+	uint16_t MODEL_NAME_125;
+	uint16_t MODEL_NAME_126;
+	uint16_t MODEL_NAME_127;
+	uint16_t MODEL_NAME_128;
+	uint16_t MACHINE_NUMBER_129;
+	uint16_t MACHINE_NUMBER_130;
+	uint16_t MACHINE_NUMBER_131;
+	uint16_t MACHINE_NUMBER_132;
+	uint16_t MACHINE_NUMBER_133;
+	uint16_t MACHINE_NUMBER_134;
+	uint16_t MACHINE_PRODUCTION_YEAR;
+	uint16_t MACHINE_PRODUCITON_MONTH;
+	uint16_t MACHINE_PRODUCITON_DAY;
+	uint16_t RATED_POWER_RATING;
+	uint16_t RESERVED_139;
+	uint16_t RESERVED_140;
+	uint16_t RATED_CURRENT;
+	uint16_t RESERVED_142;
+	uint16_t NO_OF_POLES;
+	uint16_t RESERVED_144;
+	uint16_t RATED_TORQUE;
+	uint16_t DRIVE_INPUT_VOLTAGE_MIN_RANGE;
+	uint16_t DRIVE_MAXIMUM_OUTPUT_MAX_POWER;
+	uint16_t DRIVE_MAXIMUM_CURRENT_RATING;
+	uint16_t DRIVE_FRQUENCY_MAX_RANGE;
+	uint16_t TEMPERATURE_MIN_WORKING_RANGE;
+	uint16_t TEMPERATURE_MAX_WORKING_RANGE;
+	uint16_t RANGE_MIN_IGBT_TEMPERATUE;
+	uint16_t RANGE_MAX_IGBT_TEMPERATUE;
+	uint16_t DRIVE_INPUT_VOLTAGE_MAX_RANGE;
+	uint16_t DRIVE_FRQUENCY_MIN_RANGE;
+	uint16_t INPUT_FREQUENCY_MAX_RANGE;
+	uint16_t INPUT_FREQUENCY_MIN_RANE;
+	uint16_t TORQUE_CONSTANT;
+	uint16_t FAIL_SAFE_ON_OFF;
+	uint16_t FAIL_SAFE_RUNNING_DIRECTION;
+	uint16_t FAIL_SAFE_FUNCTION_SET_SPEED;
+	uint16_t FAIL_SAFE_SOURCE;
+	uint16_t FAIL_SAFE_ACTIVATE_SET_VALUE;
+}HOLDING_REGISTER_t;
+
+
+//typedef struct{
+//	uint16_t MOTOR_STATUS;														//--30001
+//  uint16_t FAULT_CODE;																		//--30002
+//	uint16_t MOTOR_SPEED;																				//--30003
+//	uint16_t MOTOR_CURRENT;																			//--30004
+//	uint16_t DC_VOLTAGE;																				//--30005
+//	uint16_t KW;																								//--30006
+//	uint16_t WINDING_TEMPERATUE;     //motor temperature											//
+//	uint16_t IGBT_TEMPERATUE;
+//	uint16_t POWER_ON_HOURS;
+//	uint16_t RUN_HOURS;
+//	uint16_t DI1_STATUS_t; //--------
+//	uint16_t KWH;
+//	uint16_t Resvered_13;
+//	uint16_t TARGET_SPEED_MODBUS;
+//	uint16_t FIRE_STATUS;
+//	uint16_t FAIL_SAFE_STATUS;
+//	uint16_t FILTER_STATUS;
+//	uint16_t FILTER_RUN_HOURS;
+//	uint16_t AI1_VALUE;
+//	uint16_t AI1_CALCULATED_VALUE;
+//	uint16_t AI2_VALUE;
+//	uint16_t AI2_CALCULATED_VALUE;
+//	uint16_t Resvered_23;
+//	uint16_t Resvered_24;
+//	uint16_t LAST_ERROR_CODE_1ST;
+//	uint16_t LAST_ERROR_CODE_2ND;
+//	uint16_t LAST_ERROR_CODE_3RD;
+//	uint16_t LAST_ERROR_CODE_4TH_TIME;
+//	uint16_t RESERVED_29;
+//	uint16_t RESERVED_30;
+//	uint16_t RESERVED_31;
+//	uint16_t RESERVED_32;
+//	uint16_t RESERVED_33;
+//	uint16_t RESERVED_34;
+//	uint16_t RESERVED_35;
+//	uint16_t RESERVED_36;
+//	uint16_t RESERVED_37;
+//	uint16_t RESERVED_38;
+//	uint16_t RESERVED_39;
+//	uint16_t RESERVED_40;
+//	uint16_t RESERVED_41;
+//	uint16_t RESERVED_42;
+//	uint16_t RESERVED_43;
+//	uint16_t RESERVED_44;
+//	uint16_t RESERVED_45;
+//	uint16_t RESERVED_46;
+//	uint16_t RESERVED_47;
+//	uint16_t RESERVED_48;
+//	uint16_t RESERVED_49;
+//	uint16_t TORQUE;																								//--30050
+//	uint16_t LOAD;																									//--30051
+//	uint16_t OPERATING_FREQUENCY;																		//--30052
+//	uint16_t ACUTAL_MOTOR_SPEED_RATED;																				//--30053
+//}INPUT_REGISTER_t;
+
+
+typedef struct{
+	HOLDING_REGISTER_t holding_register;
+//	INPUT_REGISTER_t Input_Register;
+}MODBUS_REGISTER_t;	//-----------------------(6)
+
+
+
+
+void MODBUS_EVENT_OCCURANCE(void);
+void ANALOG_1_CONTROL_EVENT_OCCURANCE(void);
+void PID_SENSOR_EVENT_OCCURANCE(void);
+void DI1_EVENT_OCCURANCE(void);
+
+
+#endif

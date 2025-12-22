@@ -1,0 +1,17 @@
+.\out\analog_pwm_output.o: Analog_Pwm_Output.c
+.\out\analog_pwm_output.o: Analog_Pwm_Output.h
+.\out\analog_pwm_output.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\out\analog_pwm_output.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+.\out\analog_pwm_output.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
+.\out\analog_pwm_output.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+.\out\analog_pwm_output.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\inttypes.h
+.\out\analog_pwm_output.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\out\analog_pwm_output.o: ..\..\..\..\Drivers\A31M22x\include\a31m22x_mpwm.h
+.\out\analog_pwm_output.o: ..\..\..\..\Drivers\A31M22x\include\a31m22x_driver_common.h
+.\out\analog_pwm_output.o: ..\..\..\..\Core\Device\ABOV\A31M22x\Include\a31m22x.h
+.\out\analog_pwm_output.o: ..\..\..\..\Core\CMSIS\Cortex_M0P\Include\core_cm0plus.h
+.\out\analog_pwm_output.o: ..\..\..\..\Core\CMSIS\Cortex_M0P\Include\core_cmInstr.h
+.\out\analog_pwm_output.o: ..\..\..\..\Core\CMSIS\Cortex_M0P\Include\cmsis_armcc.h
+.\out\analog_pwm_output.o: ..\..\..\..\Core\CMSIS\Cortex_M0P\Include\core_cmFunc.h
+.\out\analog_pwm_output.o: ..\..\..\..\Core\Device\ABOV\A31M22x\Include\a31m22x_system.h
+.\out\analog_pwm_output.o: ..\..\..\..\Drivers\A31M22x\include\a31m22x_scu.h

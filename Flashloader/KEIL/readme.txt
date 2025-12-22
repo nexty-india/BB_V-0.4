@@ -1,0 +1,1 @@
+Copy *.FLM file onto C:\KEIL\ARM\Flash folder.

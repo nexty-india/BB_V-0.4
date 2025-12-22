@@ -1,0 +1,14 @@
+.\out\a31m22x_cfmc.o: ..\..\..\..\Drivers\A31M22x\source\a31m22x_cfmc.c
+.\out\a31m22x_cfmc.o: ..\..\..\..\Drivers\A31M22x\include\A31M22x_cfmc.h
+.\out\a31m22x_cfmc.o: ..\..\..\..\Core\Device\ABOV\A31M22x\Include\A31M22x.h
+.\out\a31m22x_cfmc.o: ..\..\..\..\Core\CMSIS\Cortex_M0P\Include\core_cm0plus.h
+.\out\a31m22x_cfmc.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\out\a31m22x_cfmc.o: ..\..\..\..\Core\CMSIS\Cortex_M0P\Include\core_cmInstr.h
+.\out\a31m22x_cfmc.o: ..\..\..\..\Core\CMSIS\Cortex_M0P\Include\cmsis_armcc.h
+.\out\a31m22x_cfmc.o: ..\..\..\..\Core\CMSIS\Cortex_M0P\Include\core_cmFunc.h
+.\out\a31m22x_cfmc.o: ..\..\..\..\Core\Device\ABOV\A31M22x\Include\a31m22x_system.h
+.\out\a31m22x_cfmc.o: ..\..\..\..\Drivers\A31M22x\include\aa_types.h
+.\out\a31m22x_cfmc.o: ..\..\..\..\Drivers\A31M22x\include\debug_frmwrk.h
+.\out\a31m22x_cfmc.o: ..\..\..\..\Drivers\A31M22x\include\A31M22x_uart.h
+.\out\a31m22x_cfmc.o: ..\..\..\..\Drivers\A31M22x\include\a31m22x_driver_common.h
+.\out\a31m22x_cfmc.o: ..\..\..\..\Drivers\A31M22x\include\a31m22x_dma.h

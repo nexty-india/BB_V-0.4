@@ -1,0 +1,5 @@
+--c99 -c --cpu Cortex-M0+ -D__EVAL --li -g -O3 -Otime --apcs=interwork -I ..\..\..\..\Core\CMSIS\Cortex_M0P\Include -I ..\..\..\..\Core\Device\ABOV\A31M22x\Include -I ..\..\..\..\Drivers\A31M22x\include -I ..\..\..\Motor_Application -I "..\..\User Files\inc"
+-IC:\Users\shashank.kapoor\AppData\Local\Arm\Packs\ARM\Cortex_DFP\1.0.0\Device\ARMCM0plus\Include
+-IC:\Users\shashank.kapoor\AppData\Local\Arm\Packs\ARM\Cortex_DFP\1.0.0\Device\ARM\ARMCM0plus\Include
+-D__UVISION_VERSION="536" -DARMCM0P -D__NO_EMBEDDED_ASM -D__DEF_A31M22x__ -DONE_SHUNT
+-o .\out\user_state_machine.o --omf_browse .\out\user_state_machine.crf --depend .\out\user_state_machine.d "..\..\User Files\src\user_state_machine.c"

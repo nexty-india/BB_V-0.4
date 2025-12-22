@@ -1,0 +1,17 @@
+.\out\digital_pwm_output.o: Digital_Pwm_Output.c
+.\out\digital_pwm_output.o: Digital_pwm_Output.h
+.\out\digital_pwm_output.o: ..\..\..\..\Core\Device\ABOV\A31M22x\Include\a31m22x.h
+.\out\digital_pwm_output.o: ..\..\..\..\Core\CMSIS\Cortex_M0P\Include\core_cm0plus.h
+.\out\digital_pwm_output.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\out\digital_pwm_output.o: ..\..\..\..\Core\CMSIS\Cortex_M0P\Include\core_cmInstr.h
+.\out\digital_pwm_output.o: ..\..\..\..\Core\CMSIS\Cortex_M0P\Include\cmsis_armcc.h
+.\out\digital_pwm_output.o: ..\..\..\..\Core\CMSIS\Cortex_M0P\Include\core_cmFunc.h
+.\out\digital_pwm_output.o: ..\..\..\..\Core\Device\ABOV\A31M22x\Include\a31m22x_system.h
+.\out\digital_pwm_output.o: ..\..\..\..\Drivers\A31M22x\include\a31m22x_scu.h
+.\out\digital_pwm_output.o: ..\..\..\..\Drivers\A31M22x\include\a31m22x_driver_common.h
+.\out\digital_pwm_output.o: ..\..\..\..\Drivers\A31M22x\include\a31m22x_timer.h
+.\out\digital_pwm_output.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\out\digital_pwm_output.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+.\out\digital_pwm_output.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
+.\out\digital_pwm_output.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+.\out\digital_pwm_output.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\inttypes.h
