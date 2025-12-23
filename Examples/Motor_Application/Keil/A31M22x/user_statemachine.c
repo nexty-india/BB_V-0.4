@@ -30,7 +30,7 @@ SYSTEM_DRIVE_EVENT_t SYSTEM_DRIVE_EVENT;
 uint16_t Motor_status = 0;
 uint16_t Check_ADC_Val = 0;
 float g_Load_per = 0;
-uint16_t g_Load_percentage;
+uint16_t g_Load_percentage,g_ambienttemperature;
 /**
 *
 *  @brief Handles all events that must occur every 1 millisecond.
@@ -63,6 +63,7 @@ void EVENT_OCCUR_1_MS(void)
 		SEND_RECOVERY_FAULT_STATUS();
 		Current_Filt();
 		Suppression();
+		g_ambienttemperature = AmbientTemperature();
 	}
 }
 

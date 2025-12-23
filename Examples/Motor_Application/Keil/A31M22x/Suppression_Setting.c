@@ -3,6 +3,26 @@
 Supression_t SuppressionSet;
 Degrating_t degrating;
 uint16_t g_Degrating_Target_Rpm;
+
+
+/**
+ * @brief Reads the ambient temperature sensor value.
+ *
+ * This function reads the ADC value corresponding to the ambient
+ * temperature sensor connected via OPAMP channel 3.
+ *
+ * @return uint16_t Raw ADC value representing ambient temperature.
+ */
+int AmbientTemperature(void)
+{
+    uint16_t AmbientTemperaturetemp = 0;
+
+    // Read ADC value from OPAMP channel 3 (Ambient Temperature Sensor)
+    AmbientTemperaturetemp = MDL_ADC_OPAMP(3);
+
+    return AmbientTemperaturetemp;
+}
+
 /**
  * @brief  IPM temperature based speed degrading logic
  *

@@ -14,7 +14,7 @@
 #include "AI1_Sensor_Status.h"
 #include "Application_Holding_Register.h"
 #include "Application_Input_Register.h"
-
+#include "MotorDriverlayer.h"
 
 #define  VDC_FILT_FACTOR	6
 typedef struct{
@@ -145,6 +145,7 @@ extern Degrating_t degrating;
 
 int DC_Filter(void);
 void IPMTemperatureDegrating(void);
+int AmbientTemperature(void);
 void WindingTemperatureDegrating(void);
 void LowerAmbientTemperatureDegrating(void);
 void UpperAmbientTemperatureDegrating(void);

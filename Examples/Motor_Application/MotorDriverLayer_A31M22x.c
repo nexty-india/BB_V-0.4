@@ -141,7 +141,7 @@ void USER_ADC_Init(void)
 	
 		
 	ADC->SCSR1 = 0
-		| (0 << 24)  // SEQ3CH 
+		| (2 << 24)  // SEQ3CH 
 		| (0 << 16)  // SEQ2CH 
 		#if 0 //AN1 ADC 
 		| (1 << 8)  // SEQ1CH (AN1, I_COM)
@@ -153,10 +153,10 @@ void USER_ADC_Init(void)
 		;
 
 	ADC->SCSR2 = 0
-		| (2 << 24)   // SEQ7CH  
+		| (0 << 24)   // SEQ7CH  
 		| (0 << 16)   // SEQ6CH
 		| (0 << 8) 	  // SEQ5CH 
-		| (6 << 0)  	// SEQ4CH (AN6 , Vref)    6
+		| (0 << 0)  	// SEQ4CH (AN6 , Vref)    6
 		;
 
 	ADC->CR = 0
@@ -191,7 +191,7 @@ uint32_t MDL_ADC_OPAMP(uint32_t Number)
 		Data = (ADC->DR4 >> 4) & 0x0FFF;   // (AN17, OO1)
 	} else if(Number == 3)
 	{
-		Data = (ADC->DR7 >> 4) & 0x0FFF;  //(AN2 ,Ambient)
+		Data = (ADC->DR3 >> 4) & 0x0FFF;  //(AN2 ,Ambient)
 	}
 		else{
 		Data = 0;
@@ -274,7 +274,7 @@ void MDL_PCU_Init(void)
 		| (0x01UL << PCU_PRCR_PUE5_Pos)  // PA5 -------------- OIN1 (0V-10V ANALOG INPUT)
 		| (0x01UL << PCU_PRCR_PUE4_Pos)  // PA4 -------------- OIP1 (0V-10V ANALOG INPUT)
 		| (0x01UL << PCU_PRCR_PUE3_Pos)  // PA3 -------------- FAULT (INTRRUPT PIN) 
-		| (0x02UL << PCU_PRCR_PUE2_Pos)  // PA2 -------------- AMBIENT_TEMPERATURE
+		| (0x00UL << PCU_PRCR_PUE2_Pos)  // PA2 -------------- AMBIENT_TEMPERATURE
 		| (0x02UL << PCU_PRCR_PUE1_Pos)  // PA1 -------------- RELAY_STATUS
 		| (0x03UL << PCU_PRCR_PUE0_Pos)  // PA0 -------------- RE/DE _ MODBUS PIN
 		;

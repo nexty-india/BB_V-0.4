@@ -47,3 +47,6 @@
 .\out\application_holding_register.o: ..\..\..\Motor_Application\a31m22x_libcfg.h
 .\out\application_holding_register.o: ..\..\..\..\Drivers\A31M22x\include\a31m22x_spi.h
 .\out\application_holding_register.o: AI1_Sensor_Status.h
+.\out\application_holding_register.o: Flash_Writing.h
+.\out\application_holding_register.o: ..\..\..\..\Drivers\A31M22x\include\A31M22x_cfmc.h
+.\out\application_holding_register.o: ..\..\..\..\Drivers\A31M22x\include\debug_frmwrk.h

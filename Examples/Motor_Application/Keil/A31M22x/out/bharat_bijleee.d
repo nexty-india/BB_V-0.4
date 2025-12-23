@@ -44,3 +44,5 @@
 .\out\bharat_bijleee.o: ..\..\..\..\Drivers\A31M22x\include\debug_frmwrk.h
 .\out\bharat_bijleee.o: Fault_Status.h
 .\out\bharat_bijleee.o: Modbus_Status.h
+.\out\bharat_bijleee.o: Application_Input_Register.h
+.\out\bharat_bijleee.o: Application_Holding_Register.h
