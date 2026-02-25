@@ -24,10 +24,6 @@
 #define R_OUT     R_156
 
 #define TOTAL_ADC_COUNT 4096
-#define POTENIOMETER_LOW_VLAUE  110
-#define POTENIOMETER_HIGH_VLAUE 4050
-
-
 
 extern uint16_t g_Fail_safe_status;
 extern uint16_t g_Pot_voltage_filt;
@@ -35,7 +31,7 @@ extern uint16_t g_AI1_Volts_Value;
 extern uint16_t g_AI1_Calculated_RPM;
 
 static int ANALOG_SENSE_0_10_VOLT_RAW(void);
- int ANALOG_SENSE_0_10_VOLT_FILT(void);
+static int ANALOG_SENSE_0_10_VOLT_FILT(void);
 static int Calcuate_RPM_0_10_Volt(void);
  void ANALOG_CONTROL_MODE(void);
 void ANALOG_CONTORL_RPM_ENABLE(void);

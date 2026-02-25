@@ -37,7 +37,7 @@
 #include "MotorDriverLayer.h"
 
 
-#include "LVD_Status.h"
+
 #include "user_timer.h"
 #include "user_adc.h"
 #include "user_statemachine.h"
@@ -81,8 +81,7 @@ int main(void)
 
 	// Initialize System and Peripheral
 	SystemInit();
-  //Check_LVD_Reset();
-	//LVD_Enable();
+
 	MDL_PCU_Init();
 #if defined(__DEF_A33M11x__)
 	//SystemCoreClockUpdate();

@@ -19,7 +19,7 @@
 
 void ANALOG_PWM_INIT(void);
 void Set_duty_period_Analog_PWM(void);
-void AnalogOutput(void);
+
 #endif
 
 

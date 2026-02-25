@@ -72,7 +72,7 @@ extern "C"
 #define CFMC_CTRL_CERS			                    (1UL<<CFMC_CTRL_CERS_Pos)
 #define CFMC_CTRL_SERS			                    (1UL<<CFMC_CTRL_SERS_Pos)
 #define CFMC_CTRL_PERS			                    (1UL<<CFMC_CTRL_PERS_Pos)
-#define CFMC_CTRL_PGM			                      (1UL<<CFMC_CTRL_PGM_Pos)
+#define CFMC_CTRL_PGM			                    (1UL<<CFMC_CTRL_PGM_Pos)
 	
 /* Public Functions ----------------------------------------------------------- */
 void CFMC_CacheCmd(FunctionalState NewState);

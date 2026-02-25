@@ -14,11 +14,11 @@
 #include <stdarg.h>
 
 
-#define DIGITAL_TIMER   0.0000016f
+
 
 void DIGITAL_PWM(void);
 void DIGITAL_PWM_INIT(void);
-void DigitalOutput(void);
+
 
 #endif
 

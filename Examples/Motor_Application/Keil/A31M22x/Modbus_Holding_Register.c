@@ -47,7 +47,7 @@ bool HOLDING_REG_AND_INPUT_REG_DATA(void)
 	/*--------------------------------------------------------------
 	 * Step 3: Prepare Response for READ HOLDING REGISTER
 	 *--------------------------------------------------------------*/
-	if((Modbus_Decode_Data.Slave_ID == g_Nodeaddress_Read) && 
+	if((Modbus_Decode_Data.Slave_ID == SLAVE_ID) && 
 	   (Modbus_Decode_Data.Function_Code == READ_HOLDING_REGISTER))   // FIXED: '==' instead of '='
 	{
 		// Validate CRC from received frame
@@ -96,7 +96,7 @@ bool HOLDING_REG_AND_INPUT_REG_DATA(void)
 	/*--------------------------------------------------------------
 	 * Step 4: Prepare Response for READ INPUT REGISTER
 	 *--------------------------------------------------------------*/
-	else if((Modbus_Decode_Data.Slave_ID == g_Nodeaddress_Read) && 
+	else if((Modbus_Decode_Data.Slave_ID == SLAVE_ID) && 
 	   (Modbus_Decode_Data.Function_Code == READ_INPUT_REGISTER))    // FIXED: '==' instead of '='
 	{
 		// Validate CRC from received frame
@@ -135,7 +135,7 @@ bool HOLDING_REG_AND_INPUT_REG_DATA(void)
 	}
 
 	
-	else if((Slave_ID == g_Nodeaddress_Read)&&(Function_Code == WRITE_MULTIPLE_REGISTER))
+	else if((Slave_ID == SLAVE_ID)&&(Function_Code == WRITE_MULTIPLE_REGISTER))
 	{
 		
 		Calculate_crc = Modbus_CRC16(data_logger.MODBUS_RECEIVED_BUFFER, 6);
@@ -168,7 +168,7 @@ bool HOLDING_REG_AND_INPUT_REG_DATA(void)
 		}
 			return true;
 	}
-	else if((Function_Code == WRITE_SINGLE_REGISTER)&&(Slave_ID == g_Nodeaddress_Read))
+	else if((Function_Code == WRITE_SINGLE_REGISTER)&&(Slave_ID == SLAVE_ID))
 	{ 
 		Calculate_crc = Modbus_CRC16(data_logger.MODBUS_RECEIVED_BUFFER, 6);
 		Crc_1 = Calculate_crc >> 8;

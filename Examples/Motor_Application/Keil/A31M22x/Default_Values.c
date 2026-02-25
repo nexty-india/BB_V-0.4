@@ -124,564 +124,503 @@ const uint32_t Input_Reg_Max_Start_Addr[] = {
 
 __attribute__((at(HOLDING_REG_MAX_START_ADDR))) 
 const uint32_t Holding_Reg_Max_Start_Addr[] = {
-    247,    // Max Node address
-    65535,  // Max Baud Rate
-    3,      // Max Parity Bit
-    6,      // Max Stop bit
-    5,      // Max Control Bit
-    3,      // Max Fan Rotation
-    3000,   // Max Maximum Speed
-    3000,   // Max Minimum Speed
-    100,    // Max Ramp Up
-    100,    // Max Ramp Down
-    0,      // Max Reserved
-    0,      // Max Reserved
-    3000,   // Max Minimum Running Speed
-    100,    // Max Ai0 Min Value
-    100,    // Max Ai0 Max Value
-    0,      // Max Reserved
-    0,      // Max Reserved
-    3000,   // Max Speed set from Modbus
-    3000,   // Max Modbus Signal loss speed
-    2,      // Max Control Bit
-    5,      // Max Set Internal Speed
-    3000,   // Max Internal speed 0
-    3000,   // Max Internal speed 1
-    3000,   // Max Internal speed 3
-    5,      // Max Disable Temperature Management
-    0,      // Max Reserved
-    0,      // Max Reserved
-    1000,   // Max Target Set point
-    1000,   // Max Kp Constant
-    1000,   // Max Ki Constant
-    1000,   // Max Control signal max limit
-    1000,   // Max Control Signal Min limit
-    0,      // Max Pid Sensor Select
-    0,      // Max Reserved
-    0,      // Max Reserved
-    2,      // Max Fire Alarm activate
-    5,      // Max Fire Alarm Mode source
-    5,      // Max Fire Alarm Control Source
-    3000,   // Max Set speed in Fire alarm mode
-    0,      // Max Reserved
-    0,      // Max Reserved
-    0,      // Max Reserved
-    5000,   // Max Set Filter Run hour
-    2,      // Max Reset Filter Run hour
-    0,      // Max Reserved
-    0,      // Max Reserved
-    0,      // Max Reserved
-    3,      // Max Di0 Enable Function
-    3,      // Max Fail Function Active
-    4,      // Max Fail Safe Source
-    3000,   // Max Fail Safe Set Speed
-    3,      // Max Fail Safe Running Direction
-    12,     // Max Fail Safe Activate At set value
-    0,      // Max Reserved
-	65535,  // Max SUPPRESSION_RANGE_SETTING
-    65535,  // Max Upper Voltage Min
-    65535,  // Max Upper Voltage Max
-    65535,  // Max Lower Voltage Min
-    65535,  // Max Lower Voltage Max
-    65535,  // Max Winding Temperature Min
-    65535,  // Max Winding Temperature Max
-    65535,  // Max IGBT Temperature Min
-    65535,  // Max IGBT Temperature Max
-    65535,  // Max Motor Current Min
-    65535,  // Max Motor Current Max
-    65535,  // Max Upper Ambient Temperature Min
-    65535,  // Max Upper Ambient Temperature Max
-    65535,  // Max Lower Ambient Temperature Min
-    65535,  // Max Lower Ambient Temperature Max
-    65535,      // Max Overpowered Min
-    65535,      // Max Overpowered Max
-    0,  		// Max Reserved
-    0,  		// Max Reserved
-    65535,  // Max DC Over Voltage Limit
-    65535,  // Max Under Voltage Limit
-    65535,  // Max Overload Limit
-    65535,  // Max OverSpeed Limit
-    65535,  // Max IPM Temperature Limit
-    65535,  // Max Winding Temperature Limit
-    65535,  // Max Over RMS Voltage Limit
-    65535,  // Max Under RMS Voltage Limit
-    0,      // Max Reserved
-    0,      // Max Reserved
-    0,      // Max Reserved
-    0,      // Max Reserved
-    65535,  // Max Recovery DC Over Voltage Limit
-    65535,  // Max Recovery DC Under Voltage Limit
-    65535,  // Max Recovery Overload Limit
-    65535,  // Max Recovery Overspeed Limit
-    65535,  // Max Anti-lock Retries Rotor Lock
-    65535,  // Max Recovery IPM Temperature Limit
-    65535,  // Max Recovery Winding Temperature Limit
-    65535,  // Max Recovery Over AC Voltage Limit
-    65535,  // Max Recovery Under AC Voltage Limit
-    65535,  // Max Reserved
-    65535,  // Max Reserved
-    65535,  // Max Reserved
-    65535,  // Max Reserved
-    65535,  // Max Reserved
-    65535,  // Max Reserved
-    65535,  // Max Reserved
-    65535,  // Max LED Mode
-    65535,  // Max K0 Function
-    65535,  // Max VibFrq_1
-    65535,  // Max VibFrq_2
-    65535,  // Max VibFrq_3
-    65535,  // Max VibFrq_4
-    65535,  // Max VibFrq_5
-    65535,  // Max VibFrq_6
-    65535,  // Max VibFrq_7
-    65535,  // Max VibFrq_8
-    65535,  // Max VibFrq_9
-    65535,  // Max VibFrq_10
-    65535,  // Max VibFrq_11
-    65535,  // Max VibFrq_12
-    65535,  // Max VibFrq_13
-    65535,  // Max VibFrq_14
-    65535,  // Max VibFrq_15
-    65535,  // Max MOTORMODEL1
-    65535,  // Max MOTORMODEL2
-    65535,  // Max MOTORMODEL3
-    65535,  // Max MOTORMODEL4
-    65535,  // Max MOTORMODEL5
-    65535,  // Max MOTORMODEL6
-    65535,  // Max MOTORMODEL7
-	65535,  // Max MOTORMODEL8
-    65535,  // Max MOTORMACHINE1
-    65535,  // Max MOTORMACHINE2
-    65535,  // Max MOTORMACHINE3
-    65535,  // Max MOTORMACHINE4
-    65535,  // Max MOTORMACHINE5
-    65535,  // Max MOTORMACHINE6
-    65535,  // Max MOTORPRODUCTION_YEAR
-    65535,  // Max MOTORPRODUCTION_MONTH
-    65535,  // Max MOTORPRODUCTION_DAY
-    65535,  // Max DRIVEMODELNAME1
-    65535,  // Max DRIVEMODELNAME2
-    65535,  // Max DRIVEMODELNAME3
-    65535,  // Max DRIVEMODELNAME4
-    65535,  // Max DRIVEMODELNAME5
-    65535,  // Max DRIVEMODELNAME6
-    65535,  // Max DRIVEMODELNAME7
-	65535,  // Max DRIVEMODELNAME8
-    65535,  // Max DRIVEMACHINENUMBER1
-    65535,  // Max DRIVEMACHINENUMBER2
-    65535,  // Max DRIVEMACHINENUMBER3
-    65535,  // Max DRIVEMACHINENUMBER4
-    65535,  // Max DRIVEMACHINENUMBER5
-    65535,  // Max DRIVEMACHINENUMBER6
-    65535,  // Max DRIVEPRODUCTION_YEAR
-    65535,  // Max DRIVEPRODUCTION_MONTH
-    65535,  // Max DRIVEPRODUCTION_DAY
-    65535,  // Max Rated Current
-    65535,  // Max Drive input voltage min range
-    65535,  // Max Drive input voltage max range
-    65535,  // Max Maximum current rating
-    65535,  // Max Output max power
-    65535,  // Max Frequency max range
-    65535,  // Max Frequency min range
-	  65535,  // Max Drive Frequency max range
-    65535,  // Max Drive Frequency min range
-    65535,  // Max Power rating
-    65535,  // Max Reserved
-    65535,  // Max Reserved
-    65535,  // Max Line input frequency min range
-    65535,  // Max Line input frequency max range
-    65535,  // Max Number of poles
-    65535,  // Max Torque Constant
-    65535,  // Max Reserved
-    65535,  // Max Reserved
-    65535,  // Max Flash Writing
-    65535,  // Max Set Default factory
-    65535,  // Max Reserved
-    65535,  // Max Reserved
-    65535,  // Max Switching Frequency
-    65535,   // Max Block protection Change of Direction
-		65535,
-		65535,
-		65535,
-		65535,
-//		180,  // Max Holding Register
+    254,    /* HOLDING_NODE_ADDRESS_MAX */
+    5,      /* HOLDING_BAUD_RATE_MAX */
+    2,      /* HOLDING_PARITY_SET_MAX */
+    1,      /* HOLDING_STOP_BIT_MAX */
+    3,      /* HOLDING_CONTROL_MODE_MAX */
+    10000,  /* HOLDING_SET_SPEED_IN_MODBUS_SIGNAL_LOSS_MODE_MAX */
+    10000,  /* HOLDING_SET_SPEED_IN_FIRE_ALARAM_MODE_MAX */
+    10000,  /* HOLDING_MAXIMUM_SPEED_MAX */
+    10000,  /* HOLDING_TARGET_SPEED_FROM_MODBUS_MAX */
+    1,      /* HOLDING_FAN_ROTATION_MAX */
+    1000,   /* HOLDING_RAMP_UP_TIME_MAX */
+    1000,   /* HOLDING_RAMP_DOWN_TIME_MAX */
+    1,      /* HOLDING_FIRE_ALARM_MODE_SOURCE_MAX */
+    1,      /* HOLDING_FIRE_ALARM_ACTIVATE_MAX */
+    1,      /* HOLDING_DI1_FUNCTION_MAX */
+    1,      /* HOLDING_DI2_FUNCTION_MAX */
+    5000,   /* HOLDING_SET_FILTER_RUN_HOURS_MAX */
+    1,      /* HOLDING_RESET_FILTER_RUN_HOURS_MAX */
+    10000,  /* HOLDING_AI1_MINIMUM_VALUE_MAX */
+    12000,  /* HOLDING_SWITCHING_FREQUENCY_MAX */
+    10000,  /* HOLDING_AI1_MAXIMUM_VALUE_MAX */
+    4,      /* HOLDING_PID_SENSOR_SELECT_MAX */
+    0,      /* HOLDING_RESERVED_23_MAX */
+    1,      /* HOLDING_PID_SENSOR_SELECT_MAX */
+    0,      /* HOLDING_RESERVED_25_MAX */
+    0,      /* HOLDING_RESERVED_26_MAX */
+    0,      /* HOLDING_RESERVED_27_MAX */
+    0,      /* HOLDING_RESERVED_28_MAX */
+    0,      /* HOLDING_RESERVED_29_MAX */
+    0,      /* HOLDING_RESERVED_30_MAX */
+    1,      /* HOLDING_SET_DEFAULT_FACTORY_MAX */
+    10000,  /* HOLDING_VIB_FREQUENCY_REG_1_MAX */
+    10000,  /* HOLDING_VIB_FREQUENCY_REG_2_MAX */
+    10000,  /* HOLDING_VIB_FREQUENCY_REG_3_MAX */
+    10000,  /* HOLDING_VIB_FREQUENCY_REG_4_MAX */
+    10000,  /* HOLDING_VIB_FREQUENCY_REG_5_MAX */
+    10000,  /* HOLDING_VIB_FREQUENCY_REG_6_MAX */
+    10000,  /* HOLDING_VIB_FREQUENCY_REG_7_MAX */
+    10000,  /* HOLDING_VIB_FREQUENCY_REG_8_MAX */
+    10000,  /* HOLDING_VIB_FREQUENCY_REG_9_MAX */
+    10000,  /* HOLDING_VIB_FREQUENCY_REG_10_MAX */
+    10000,  /* HOLDING_VIB_FREQUENCY_REG_11_MAX */
+    10000,  /* HOLDING_VIB_FREQUENCY_REG_12_MAX */
+    10000,  /* HOLDING_VIB_FREQUENCY_REG_13_MAX */
+    10000,  /* HOLDING_VIB_FREQUENCY_REG_14_MAX */
+    10000,  /* HOLDING_VIB_FREQUENCY_REG_15_MAX */
+    2,      /* HOLDING_BMS_FUNCTION_MAX */
+    15,     /* HOLDING_SUPPRESSION_RANGE_SETTING_MAX */
+    10000,  /* HOLDING_RANGE_MIN_SPEED_MAX */
+    10000,  /* HOLDING_RANGE_MAX_SPEED_MAX */
+    90,     /* HOLDING_RANGE_MIN_WINDING_TEMPERATUE_MAX */
+    70,     /* HOLDING_RANGE_MAX_WINDING_TEMPERATUE_MAX */
+    2493,   /* HOLDING_RANGE_MIN_MOTOR_CURRENT_MAX */
+    2493,   /* HOLDING_RANGE_MAX_MOTOR_CURRENT_MAX */
+    1,      /* HOLDING_PID_CONFIGURATION_DIFFERENTIAL_PRESSURE_SET_VALUE_MAX */
+    1,      /* HOLDING_DIFFERENTIAL_PRESSURE_RANGE_MIN_MAX */
+    1,      /* HOLDING_DIFFERNETIAL_PRESEURE_RANGE_MAX_MAX */
+    1,      /* HOLDING_PRESSURE_SPEED_MIN_MAX */
+    1,      /* HOLDING_PRESSURE_SPEED_MAX_MAX */
+    1,      /* HOLDING_PID_CONFIGURATION_DIFFERNETIAL_TEMPERAUTE_SET_VALUE_MAX */
+    1,      /* HOLDING_RESERVED_61_MAX */
+    1,      /* HOLDING_RESERVED_62_MAX */
+    1,      /* HOLDING_DIFFERNTIAL_TEMPERATURE_SPEED_MIN_MAX */
+    1,      /* HOLDING_DIFFERNTIAL_TEMPERATURE_SPEED_MAX_MAX */
+    1,      /* HOLDING_PID_CONFIGURE_FLOW_RATE_SET_VALUE_MAX */
+    1,      /* HOLDING_FLOW_RATE_RANGE_MIN_MAX */
+    1,      /* HOLDING_FLOW_RATE_RANGE_MAX_MAX */
+    1,      /* HOLDING_FLOW_SPEED_MIN_MAX */
+    1,      /* HOLDING_FLOW_SPEED_MAX_MAX */
+    1,      /* HOLDING_K1_FUNCTION_MAX */
+    10000,  /* HOLDING_SET_INTERNAL_1_MAX */
+    10000,  /* HOLDING_SET_INTERNAL_2_MAX */
+    10000,  /* HOLDING_SET_INTERNAL_3_MAX */
+    10000,  /* HOLDING_MIN_SPEED_MAX */
+    65535,  /* HOLDING_RESERVED_75_MAX */
+    1,      /* HOLDING_CONTROL_BITS_MAX */
+    3,      /* HOLDING_RESERVED_77_MAX */
+    1,      /* HOLDING_LED_MODE_MAX */
+    3,      /* HOLDING_TMPMGMT_MAX */
+    1,      /* HOLDING_MIDSPEED_OFF_MAX */
+    0,      /* HOLDING_RESERVED_81_MAX */
+    0,      /* HOLDING_RESERVED_82_MAX */
+    0,      /* HOLDING_RESERVED_83_MAX */
+    0,      /* HOLDING_RESERVED_84_MAX */
+    0,      /* HOLDING_RESERVED_85_MAX */
+    0,      /* HOLDING_RESERVED_86_MAX */
+    0,      /* HOLDING_RESERVED_87_MAX */
+    0,      /* HOLDING_RESERVED_88_MAX */
+    0,      /* HOLDING_RESERVED_89_MAX */
+    1,      /* HOLDING_BLOCKING_PROTECTION_CHANGE_OF_DIRECTION_MAX */
+    5,      /* HOLDING_RESERVED_91_MAX */
+    1,      /* HOLDING_RESET_MAX */
+    1,      /* HOLDING_ANTI_LOCK_RETIES_ROTOR_LOCK_MAX */
+    1,      /* HOLDING_SYSTEM_DESIGNER_MAX */
+    1,      /* HOLDING_END_CUSTOMER_MAX */
+    1,      /* HOLDING_SENSOR_PRESSURE_UNIT_MAX */
+    1,      /* HOLDING_SENSOR_TEMPERATURE_UNIT_MAX */
+    1,      /* HOLDING_SENSOR_FLOW_UNIT_MAX */
+    0,      /* HOLDING_RESERVED_99_MAX */
+    0,      /* HOLDING_RESERVED_100_MAX */
+    0,      /* HOLDING_RESERVED_101_MAX */
+    1,      /* HOLDING_SYSTEM_ADMINISTRATOR_MAX */
+    0,      /* HOLDING_RESERVED_103_MAX */
+    65535,  /* HOLDING_MOTOR_MODEL_NAME_104_MAX */
+    65535,  /* HOLDING_MOTOR_MODEL_NAME_105_MAX */
+    65535,  /* HOLDING_MOTOR_MODEL_NAME_106_MAX */
+    65535,  /* HOLDING_MOTOR_MODEL_NAME_107_MAX */
+    65535,  /* HOLDING_MOTOR_MODEL_NAME_108_MAX */
+    65535,  /* HOLDING_MOTOR_MODEL_NAME_109_MAX */
+    65535,  /* HOLDING_MOTOR_MODEL_NAME_110_MAX */
+    65535,  /* HOLDING_MOTOR_MODEL_NAME_111_MAX */
+    65535,  /* HOLDING_MOTOR_MACHINE_NUMBER_112_MAX */
+    65535,  /* HOLDING_MOTOR_MACHINE_NUMBER_113_MAX */
+    65535,  /* HOLDING_MOTOR_MACHINE_NUMBER_114_MAX */
+    65535,  /* HOLDING_MOTOR_MACHINE_NUMBER_115_MAX */
+    65535,  /* HOLDING_MOTOR_MACHINE_NUMBER_116_MAX */
+    65535,  /* HOLDING_MOTOR_MACHINE_NUMBER_117_MAX */
+    65535,  /* HOLDING_MOTOR_PRODUCTION_YEAR_MAX */
+    65535,  /* HOLDING_MOTOR_PRODUCTION_MONTH_MAX */
+    65535,  /* HOLDING_MOTOR_PRODUCTION_DAY_MAX */
+    65535,  /* HOLDING_MODEL_NAME_121_MAX */
+    65535,  /* HOLDING_MODEL_NAME_122_MAX */
+    65535,  /* HOLDING_MODEL_NAME_123_MAX */
+    65535,  /* HOLDING_MODEL_NAME_124_MAX */
+    65535,  /* HOLDING_MODEL_NAME_125_MAX */
+    65535,  /* HOLDING_MODEL_NAME_126_MAX */
+    65535,  /* HOLDING_MODEL_NAME_127_MAX */
+    65535,  /* HOLDING_MODEL_NAME_128_MAX */
+    65535,  /* HOLDING_MACHINE_NUMBER_129_MAX */
+    65535,  /* HOLDING_MACHINE_NUMBER_130_MAX */
+    65535,  /* HOLDING_MACHINE_NUMBER_131_MAX */
+    65535,  /* HOLDING_MACHINE_NUMBER_132_MAX */
+    65535,  /* HOLDING_MACHINE_NUMBER_133_MAX */
+    65535,  /* HOLDING_MACHINE_NUMBER_134_MAX */
+    65535,  /* HOLDING_MACHINE_PRODUCTION_YEAR_MAX */
+    65535,  /* HOLDING_MACHINE_PRODUCITON_MONTH_MAX */
+    65535,  /* HOLDING_MACHINE_PRODUCITON_DAY_MAX */
+    6000,   /* HOLDING_RATED_POWER_RATING_MAX */
+    0,      /* HOLDING_RESERVED_139_MAX */
+    0,      /* HOLDING_RESERVED_140_MAX */
+    2498,   /* HOLDING_RATED_CURRENT_MAX */
+    0,      /* HOLDING_RESERVED_142_MAX */
+    20,     /* HOLDING_NO_OF_POLES_MAX */
+    0,      /* HOLDING_RESERVED_144_MAX */
+    750,    /* HOLDING_RATED_TORQUE_MAX */
+    0,      /* HOLDING_DRIVE_INPUT_VOLTAGE_MIN_RANGE_MAX */
+    6000,   /* HOLDING_DRIVE_MAXIMUM_OUTPUT_MAX_POWER_MAX */
+    2498,   /* HOLDING_DRIVE_MAXIMUM_CURRENT_RATING_MAX */
+    60,     /* HOLDING_DRIVE_FRQUENCY_MAX_RANGE_MAX */
+    320,    /* HOLDING_TEMPERATURE_MIN_WORKING_RANGE_MAX */
+    200,    /* HOLDING_TEMPERATURE_MAX_WORKING_RANGE_MAX */
+    1339,   /* HOLDING_RANGE_MIN_IGBT_TEMPERATUE_MAX */
+    3553,   /* HOLDING_RANGE_MAX_IGBT_TEMPERATUE_MAX */
+    778,    /* HOLDING_DRIVE_INPUT_VOLTAGE_MAX_RANGE_MAX */
+    0,      /* HOLDING_DRIVE_FRQUENCY_MIN_RANGE_MAX */
+    16000,  /* HOLDING_INPUT_FREQUENCY_MAX_RANGE_MAX */
+    50,     /* HOLDING_INPUT_FREQUENCY_MIN_RANE_MAX */
+    1,      /* HOLDING_TORQUE_CONSTANT_MAX */
+    1,      /* HOLDING_FAIL_SAFE_ON_OFF_MAX */
+    2,      /* HOLDING_FAIL_SAFE_RUNNING_DIRECTION_MAX */
+    10000,  /* HOLDING_FAIL_SAFE_FUNCTION_SET_SPEED_MAX */
+    1,      /* HOLDING_FAIL_SAFE_SOURCE_MAX */
+    2       /* HOLDING_FAIL_SAFE_ACTIVATE_SET_VALUE_MAX */
 };
 
 __attribute__((at(HOLDING_REG_MIN_START_ADDR))) 
 const uint32_t Holding_Reg_Min_Start_Addr[] = {
-    0,   // Min Node address
-    0,   // Min Baud Rate
-    0,   // Min Parity Bit
-    0,   // Min Stop bit
-    0,   // Min Control Bit
-    0,   // Min Fan Rotation
-    0,   // Min Maximum Speed
-    0,   // Min Minimum Speed
-    0,   // Min Ramp Up
-    0,   // Min Ramp Down
-    0,   // Min Reserved
-    0,   // Min Reserved
-    0,   // Min Minimum Running Speed
-    0,   // Min Ai0 Min Value
-    0,   // Min Ai0 Max Value
-    0,   // Min Reserved
-    0,   // Min Reserved
-    0,   // Min Speed set from Modbus
-    0,   // Min Modbus Signal loss speed
-    0,   // Min Control Bit
-    0,   // Min Set Internal Speed
-    0,   // Min Internal speed 0
-    0,   // Min Internal speed 0
-    0,   // Min Internal speed 3
-    0,   // Min Disable Temperature Management
-    0,   // Min Reserved
-    0,   // Min Reserved
-    0,   // Min Target Set point
-    0,   // Min Kp Constant
-    0,   // Min Ki Constant
-    0,   // Min Control signal max limit
-    0,   // Min Control Signal Min limit
-    0,   // Min Pid Sensor Select
-    0,   // Min Reserved
-    0,   // Min Reserved
-    0,   // Min Fire Alarm activate
-    0,   // Min Fire Alarm Mode source
-    0,   // Min Fire Alarm Control Source
-    0,   // Min Set speed in Fire alarm mode
-    0,   // Min Reserved
-    0,   // Min Reserved
-    0,   // Min Reserved
-    0,   // Min Set Filter Run hour
-    0,   // Min Reset Filter Run hour
-    0,   // Min Reserved
-    0,   // Min Reserved
-    0,   // Min Reserved
-    0,   // Min Di0 Enable Function
-    0,   // Min Fail Function Active
-    0,   // Min Fail Safe Source
-    0,   // Min Fail Safe Set Speed
-    0,   // Min Fail Safe Running Direction
-    0,   // Min Fail Safe Activate At set value
-    0,   // Min Reserved
-    0,   // Min Set Suppression Range Setting
-    0,   // Min Upper Voltage Min
-    0,   // Min Upper Voltage Max
-    0,   // Min Lower Voltage Min
-    0,   // Min Lower Voltage Max
-    0,   // Min Winding Temperature Min
-    0,   // Min Winding Temperature Max
-    0,   // Min IGBT Temperature Min
-    0,   // Min IGBT Temperature Max
-    0,   // Min Motor Current Min
-    0,   // Min Motor Current Max
-    0,   // Min Upper Ambient Temperature Min
-    0,   // Min Upper Ambient Temperature Max
-    0,   // Min Lower Ambient Temperature Min
-    0,   // Min Lower Ambient Temperature Max
-    0,   // Min Overpowered Min
-    0,   // Min Overpowered Max
-    0,   // Min Reserved
-    0,   // Min Reserved
-    0,   // Min DC Over Voltage Limit
-    0,   // Min Under Voltage Limit
-    0,   // Min Overload Limit
-    0,   // Min OverSpeed Limit
-    0,   // Min IPM Temperature Limit
-    0,   // Min Winding Temperature Limit
-    0,   // Min Over RMS Voltage Limit
-    0,   // Min Under RMS Voltage Limit
-    0,   // Min Reserved
-    0,   // Min Reserved
-    0,   // Min Reserved
-    0,   // Min Reserved
-    0,   // Min Recovery DC Over Voltage Limit
-    0,   // Min Recovery DC Under Voltage Limit
-    0,   // Min Recovery Overload Limit
-    0,   // Min Recovery Overspeed Limit
-    0,   // Min Anti-lock Retries Rotor Lock
-    0,   // Min Recovery IPM Temperature Limit
-    0,   // Min Recovery Winding Temperature Limit
-    0,   // Min Recovery Over AC Voltage Limit
-    0,   // Min Recovery Under AC Voltage Limit
-    0,   // Min Reserved
-    0,   // Min Reserved
-    0,   // Min Reserved
-    0,   // Min Reserved
-    0,   // Min Reserved
-    0,   // Min Reserved
-    0,   // Min Reserved
-    0,   // Min LED Mode
-    0,   // Min K0 Function
-    0,   // Min VibFrq_0
-    0,   // Min VibFrq_1
-    0,   // Min VibFrq_3
-    0,   // Min VibFrq_4
-    0,   // Min VibFrq_5
-    0,   // Min VibFrq_6
-    0,   // Min VibFrq_7
-    0,   // Min VibFrq_8
-    0,   // Min VibFrq_9
-    0,   // Min VibFrq_10
-    0,   // Min VibFrq_11
-    0,   // Min VibFrq_12
-    0,   // Min VibFrq_13
-    0,   // Min VibFrq_14
-    0,   // Min VibFrq_15
-    0,   // Min MOTORMODEL0
-    0,   // Min MOTORMODEL1
-    0,   // Min MOTORMODEL3
-    0,   // Min MOTORMODEL4
-    0,   // Min MOTORMODEL5
-    0,   // Min MOTORMODEL6
-    0,   // Min MOTORMODEL7
-    0,   // Min MOTORMODEL8
-    0,   // Min MOTORMACHINE0
-    0,   // Min MOTORMACHINE1
-    0,   // Min MOTORMACHINE3
-    0,   // Min MOTORMACHINE4
-    0,   // Min MOTORMACHINE5
-    0,   // Min MOTORMACHINE6
-    0,   // Min MOTORPRODUCTION_YEAR
-    0,   // Min MOTORPRODUCTION_MONTH
-    0,   // Min MOTORPRODUCTION_DAY
-    0,   // Min DRIVEMODELNAME0
-    0,   // Min DRIVEMODELNAME1
-    0,   // Min DRIVEMODELNAME3
-    0,   // Min DRIVEMODELNAME4
-    0,   // Min DRIVEMODELNAME5
-    0,   // Min DRIVEMODELNAME6
-    0,   // Min DRIVEMODELNAME7
-    0,   // Min DRIVEMODELNAME8
-    0,   // Min DRIVEMACHINENUMBER0
-    0,   // Min DRIVEMACHINENUMBER1
-    0,   // Min DRIVEMACHINENUMBER3
-    0,   // Min DRIVEMACHINENUMBER4
-    0,   // Min DRIVEMACHINENUMBER5
-    0,   // Min DRIVEMACHINENUMBER6
-    0,   // Min DRIVEPRODUCTION_YEAR
-    0,   // Min DRIVEPRODUCTION_MONTH
-    0,   // Min DRIVEPRODUCTION_DAY
-    0,   // Min Rated Current
-    0,   // Min Drive input voltage min range
-    0,   // Min Drive input voltage max range
-    0,   // Min Maximum current rating
-    0,   // Min Output max power
-    0,   // Min Frequency max range
-    0,   // Min Frequency min range
-    0,   // Min Frequency max range
-    0,   // Min Frequency min range
-    0,   // Min Power rating
-    0,   // Min Reserved
-    0,   // Min Reserved
-    0,   // Min Line input frequency min range
-    0,   // Min Line input frequency max range
-    6,   // Min Number of poles
-    0,   // Min Torque Constant
-    0,   // Min Reserved
-    0,   // Min Reserved
-    0,   // Min Flash Writing
-    0,   // Min Set Default factory
-    0,   // Min Reserved
-    0,   // Min Reserved
-    0,   // Min Switching Frequency
-    0,   // Min Block protection Change of Direction
-		0,
-		0,
-		0,
-		0,
-		1,
-//    180, // Min Holding Register
+	1,/*HOLDING_NODE_ADDRESS_MIN*/
+	0,/*HOLDING_BAUD_RATE_MIN*/
+	0,/*HOLDING_PARITY_SET_MIN*/
+	0,/*HOLDING_STOP_BIT_MIN*/
+	0,/*HOLDING_CONTROL_MODE_MIN*/
+	10000,/*HOLDING_SET_SPEED_IN_MODBUS_SIGNAL_LOSS_MODE_MIN*/
+	10000,/*HOLDING_SET_SPEED_IN_FIRE_ALARAM_MODE_MIN*/
+	10000,/*HOLDING_MINIMUM_SPEED_MIN*/
+	10000,/*HOLDING_TARGET_SPEED_FROM_MODBUS_MIN*/
+	0	,/*HOLDING_FAN_ROTATION_MIN*/
+	0	,/*HOLDING_RAMP_UP_TIME_MIN*/
+	0	,/*HOLDING_RAMP_DOWN_TIME_MIN*/
+	0	,/*HOLDING_FIRE_ALARM_MODE_SOURCE_MIN*/
+	0	,/*HOLDING_FIRE_ALARM_ACTIVATE_MIN*/
+	0	,/*HOLDING_DI1_FUNCTION_MIN*/
+	0	,/*HOLDING_DI2_FUNCTION_MIN*/
+	0	,/*HOLDING_SET_FILTER_RUN_HOURS_MIN*/
+	0	,/*HOLDING_RESET_FILTER_RUN_HOURS_MIN*/
+	0	,/*HOLDING_AI1_MINIMUM_VALUE_MIN*/
+	0,/*HOLDING_SWITCHING_FREQUENCY_MIN*/
+	0,/*HOLDING_AI1_MINIMUM_VALUE_MIN*/
+	0,/*HOLDING_PID_SENSOR_SELECT_MIN*/     //PID REGISTER 
+	0,/*HOLDING_RESERVED_23_MIN*/
+	0,/*HOLDING_RESERVED_24_MIN*/
+	0,/*HOLDING_RESERVED_25_MIN*/
+	0,/*HOLDING_RESERVED_26_MIN*/
+	0,/*HOLDING_RESERVED_27_MIN*/
+	0,/*HOLDING_RESERVED_28_MIN*/
+	0,/*HOLDING_RESERVED_29_MIN*/
+	0,/*HOLDING_RESERVED_30_MIN*/
+	10000,/*HOLDING_SET_DEFAULT_FACTORY_MIN*/
+	10000,/*HOLDING_VIB_FREQUENCY_REG_1_MIN*/
+	10000,/*HOLDING_VIB_FREQUENCY_REG_2_MIN*/
+	10000,/*HOLDING_VIB_FREQUENCY_REG_3_MIN*/
+	10000,/*HOLDING_VIB_FREQUENCY_REG_4_MIN*/
+	10000,/*HOLDING_VIB_FREQUENCY_REG_5_MIN*/
+	10000,/*HOLDING_VIB_FREQUENCY_REG_6_MIN*/
+	10000,/*HOLDING_VIB_FREQUENCY_REG_7_MIN*/
+	10000,/*HOLDING_VIB_FREQUENCY_REG_8_MIN*/
+	10000,/*HOLDING_VIB_FREQUENCY_REG_9_MIN*/
+	10000,/*HOLDING_VIB_FREQUENCY_REG_10_MIN*/
+	10000,/*HOLDING_VIB_FREQUENCY_REG_11_MIN*/
+	10000,/*HOLDING_VIB_FREQUENCY_REG_12_MIN*/
+	10000,/*HOLDING_VIB_FREQUENCY_REG_13_MIN*/
+	10000,/*HOLDING_VIB_FREQUENCY_REG_14_MIN*/
+	10000,/*HOLDING_VIB_FREQUENCY_REG_15_MIN*/
+	0,/*HOLDING_BMS_FUNCTION_MIN*/
+	0,/*HOLDING_SUPPRESSION_RANGE_SETTING_MIN*/
+	0,/*HOLDING_RANGE_MIN_SPEED_MIN*/
+	0,/*HOLDING_RANGE_MIN_SPEED_MIN*/
+	0,/*HOLDING_RANGE_MIN_WINDING_TEMPERATUE_MIN*/
+	0,/*HOLDING_RANGE_MIN_WINDING_TEMPERATUE_MIN*/
+	0,/*HOLDING_RANGE_MIN_MOTOR_CURRENT_MIN*/
+	0	,/*HOLDING_RANGE_MIN_MOTOR_CURRENT_MIN*/
+	0,/*HOLDING_PID_CONFIGURATION_DIFFERENTIAL_PRESSURE_SET_VALUE_MIN*/
+	0,/*HOLDING_DIFFERENTIAL_PRESSURE_RANGE_MIN_MIN*/
+	0,/*HOLDING_DIFFERNETIAL_PRESEURE_RANGE_MIN_MIN*/
+	0,/*HOLDING_PRESSURE_SPEED_MIN_MIN*/
+	0,/*HOLDING_PRESSURE_SPEED_MIN_MIN*/
+	0,/*HOLDING_PID_CONFIGURATION_DIFFERNETIAL_TEMPERAUTE_SET_VALUE_MIN*/
+	0,/*HOLDING_RESERVED_61_MIN*/
+	0,/*HOLDING_RESERVED_62_MIN*/
+	0,/*HOLDING_DIFFERNTIAL_TEMPERATURE_SPEED_MIN_MIN*/
+	0,/*HOLDING_DIFFERNTIAL_TEMPERATURE_SPEED_MIN_MIN*/
+	0,/*HOLDING_PID_CONFIGURE_FLOW_RATE_SET_VALUE_MIN*/
+	0,/*HOLDING_FLOW_RATE_RANGE_MIN_MIN*/
+	0,/*HOLDING_FLOW_RATE_RANGE_MIN_MIN*/
+	0,/*HOLDING_FLOW_SPEED_MIN_MIN*/
+	0,/*HOLDING_FLOW_SPEED_MIN_MIN*/
+	0,/*HOLDING_K1_FUNCTION_MIN*/
+	0,/*HOLDING_SET_INTERNAL_1_MIN*/
+	0,/*HOLDING_SET_INTERNAL_2_MIN*/
+	0,/*HOLDING_SET_INTERNAL_3_MIN*/
+	0,/*HOLDING_MIN_SPEED_MIN*/
+	0,/*HOLDING_RESERVED_75_MIN*/
+	0,/*HOLDING_CONTROL_BITS_MIN*/
+	0,/*HOLDING_RESERVED_77_MIN*/
+	0,/*HOLDING_LED_MODE_MIN*/
+	0,/*HOLDING_RESERVED_79_MIN*/
+	0,/*HOLDING_RESERVED_80_MIN*/
+	0,/*HOLDING_RESERVED_81_MIN*/
+	0,/*HOLDING_RESERVED_82_MIN*/
+	0,/*HOLDING_RESERVED_83_MIN*/
+	0,/*HOLDING_RESERVED_84_MIN*/
+	0,/*HOLDING_RESERVED_85_MIN*/
+	0,/*HOLDING_RESERVED_86_MIN*/
+	0,/*HOLDING_RESERVED_87_MIN*/
+	0,/*HOLDING_RESERVED_88_MIN*/
+	0,/*HOLDING_RESERVED_89_MIN*/
+	0,/*HOLDING_BLOCKING_PROTECTION_CHANGE_OF_DIRECTION_MIN*/
+	0,/*HOLDING_RESERVED_91_MIN*/
+	0,/*HOLDING_RESET_MIN*/
+	0,/*HOLDING_ANTI_LOCK_RETIES_ROTOR_LOCK_MIN*/
+	0,/*HOLDING_SYSTEM_DESIGNER_MIN*/
+	0,/*HOLDING_END_CUSTOMER_MIN*/
+	0,/*HOLDING_SENSOR_PRESSURE_UNIT_MIN*/
+	0,/*HOLDING_SENSOR_TEMPERATURE_UNIT_MIN*/
+	0,/*HOLDING_SENSOR_FLOW_UNIT_MIN*/
+	0,/*HOLDING_RESERVED_99_MIN*/
+	0,/*HOLDING_RESERVED_100_MIN*/
+	0,/*HOLDING_RESERVED_101_MIN*/
+	0,/*HOLDING_SYSTEM_ADMINISTRATOR_MIN*/
+	0,/*HOLDING_RESERVED_103_MIN*/
+	0,/*HOLDING_MOTOR_MODEL_NAME_104_MIN*/
+	0,/*HOLDING_MOTOR_MODEL_NAME_105_MIN*/
+	0,/*HOLDING_MOTOR_MODEL_NAME_106_MIN*/
+	0,/*HOLDING_MOTOR_MODEL_NAME_107_MIN*/
+	0,/*HOLDING_MOTOR_MODEL_NAME_108_MIN*/
+	0,/*HOLDING_MOTOR_MODEL_NAME_109_MIN*/
+	0,/*HOLDING_MOTOR_MODEL_NAME_110_MIN*/
+	0,/*HOLDING_MOTOR_MODEL_NAME_111_MIN*/
+	0,/*HOLDING_MOTOR_MACHINE_NUMBER_112_MIN*/
+	0,/*HOLDING_MOTOR_MACHINE_NUMBER_113_MIN*/
+	0,/*HOLDING_MOTOR_MACHINE_NUMBER_114_MIN*/
+	0,/*HOLDING_MOTOR_MACHINE_NUMBER_115_MIN*/
+	0,/*HOLDING_MOTOR_MACHINE_NUMBER_116_MIN*/
+	0,/*HOLDING_MOTOR_MACHINE_NUMBER_117_MIN*/
+	0,/*HOLDING_MOTOR_PRODUCTION_YEAR_MIN*/
+	0,/*HOLDING_MOTOR_PRODUCTION_MONTH_MIN*/
+	0,/*HOLDING_MOTOR_PRODUCTION_DAY_MIN*/
+	0,/*HOLDING_MODEL_NAME_121_MIN*/
+	0,/*HOLDING_MODEL_NAME_122_MIN*/
+	0,/*HOLDING_MODEL_NAME_123_MIN*/
+	0,/*HOLDING_MODEL_NAME_124_MIN*/
+	0,/*HOLDING_MODEL_NAME_125_MIN*/
+	0,/*HOLDING_MODEL_NAME_126_MIN*/
+	0,/*HOLDING_MODEL_NAME_127_MIN*/
+	0,/*HOLDING_MODEL_NAME_128_MIN*/
+	0,/*HOLDING_MACHINE_NUMBER_129_MIN*/
+	0,/*HOLDING_MACHINE_NUMBER_130_MIN*/
+	0,/*HOLDING_MACHINE_NUMBER_131_MIN*/
+	0,/*HOLDING_MACHINE_NUMBER_132_MIN*/
+	0,/*HOLDING_MACHINE_NUMBER_133_MIN*/
+	0,/*HOLDING_MACHINE_NUMBER_134_MIN*/
+	0,/*HOLDING_MACHINE_PRODUCTION_YEAR_MIN*/
+	0,/*HOLDING_MACHINE_PRODUCITON_MONTH_MIN*/
+	0,/*HOLDING_MACHINE_PRODUCITON_DAY_MIN*/
+	0,/*HOLDING_RATED_POWER_RATING_MIN*/
+	0,/*HOLDING_RESERVED_139_MIN*/
+	0,/*HOLDING_RESERVED_140_MIN*/
+	0,/*HOLDING_RATED_CURRENT_MIN*/
+	0,/*HOLDING_RESERVED_142_MIN*/
+	2,/*HOLDING_NO_OF_POLES_MIN*/
+	0,/*HOLDING_RESERVED_144_MIN*/
+	0,/*HOLDING_RATED_TORQUE_MIN*/
+	0,/*HOLDING_DRIVE_INPUT_VOLTAGE_MIN_RANGE_MIN*/
+	0,/*HOLDING_DRIVE_MINIMUM_OUTPUT_MIN_POWER_MIN*/
+	0,/*HOLDING_DRIVE_MINIMUM_CURRENT_RATING_MIN*/
+	0,/*HOLDING_DRIVE_FRQUENCY_MIN_RANGE_MIN*/
+	0,/*HOLDING_TEMPERATURE_MIN_WORKING_RANGE_MIN*/
+	0,/*HOLDING_TEMPERATURE_MIN_WORKING_RANGE_MIN*/
+	0,/*HOLDING_RANGE_MIN_IGBT_TEMPERATUE_MIN*/
+	0,/*HOLDING_RANGE_MIN_IGBT_TEMPERATUE_MIN*/
+	0,/*HOLDING_DRIVE_INPUT_VOLTAGE_MIN_RANGE_MIN*/
+	0,/*HOLDING_DRIVE_FRQUENCY_MIN_RANGE_MIN*/
+	0,/*HOLDING_INPUT_FREQUENCY_MIN_RANGE_MIN*/
+	0,/*HOLDING_INPUT_FREQUENCY_MIN_RANE_MIN*/
+	0,/*HOLDING_TORQUE_CONSTANT_MIN*/
+	0,/*HOLDING_FAIL_SAFE_ON_OFF_MIN*/
+	0,/*HOLDING_FAIL_SAFE_RUNNING_DIRECTION_MIN*/
+	0,/*HOLDING_FAIL_SAFE_FUNCTION_SET_SPEED_MIN*/
+	0,/*HOLDING_FAIL_SAFE_SOURCE_MIN*/
+	0,/*HOLDING_FAIL_SAFE_ACTIVATE_SET_VALUE_MIN*/
+	0,/*HOLDING_TOTAL_MEMBER_MIN*/
 	};
 		
 	__attribute__((at(HOLDING_REG_DEFAULT_START_ADDR))) 
 const uint32_t Holding_Reg_Default_Start_Addr[] = {
-	1      , //Default Node address
-	9600  , //Default Baud Rate
-	0      , //Default Parity Bit
-	3      , //Default Stop bit
-	3      , //Default Control BIt
-	0      , //Default Fan Rotation
-	1800   , //Default Maximum Speed
-	400    , //Default Minimum Speed
-	0      , //Default Ramp Up
-	0      , //Default Ramp Down
-	0      , //Default Reserved 
-	0      , //Default Reserved
-	300    , //Default Minimum Running Speed
-	20     , //Default Ai1 Min Value
-	80     , //Default Ai1 Max Value
-	0      , //Default Reserved
-	0      , //Default Reserved
-	500   , //Default Speed set from Modbus
-	1800   , //Default Modbus Signal loss speed
-	0      , //Default Control Bit
-	1      , //Default Set Internal Speed
-	1000   , //Default Internal speed 1
-	1500   , //Default Internal speed 2
-	1800   , //Default Internal speed 3
-	0      , //Default Disable Temperature Management
-	0      , //Default Reserved
-	0      , //Default Reserved
-	0      , //Default Target Set point
-	0      , //Default Kp Constant
-	0      , //Default Ki Constant
-	0      , //Default Control signal max limit
-	0      , //Default Control SIgnal Min limit
-	0      , //Default Pid Sensor Select
-	0      , //Default Reserved
-	0      , //Default Reserved
-	0      , //Default Fire Alarm activate
-	0      , //Default Fire Alarm Mode source
-	1      , //Default Fire Alarm Conrol Source
-	1200   , //Default Set speed in Fire alarm mode
-	0      , //Default Reserved
-	0      , //Default Reserved
-	0      , //Default Reserved
-	1200   , //Default Set Filter Run hour
-	0      , //Default Reset Filter Run hour
-	0      , //Default Reserved
-	0      , //Default Reserved
-	0      , //Default Reserved
-	0      , //Default Di1 Enable Function
-	0      , //Default Fail Function Active
-	1      , //Default Fail Safe Soruce
-	1200   , //Default Fail Safe Set Speed 
-	1      , //Default Fail Safe Running Direction
-	2      , //Default Fail Safe Activate At set value
-	5     , //Default Reserved
-	0      , //Default Set Suppression Range Setting
-	500    , //Default Upper Voltage Min
-	520    , //Default Upper Voltage Max
-	360    , //Default Lower Voltage Min
-	380    , //Default Lower Voltage Max
-	90     , //Default Winding Temperature Min
-	100    , //Default Winding Temperature Max
-	35     , //Default IGBT Temperature Min
-	50    , //Default IGBT Temperature Max
-	15     , //Default Motor Current Min 
-	15     , //Default Motor Current Max
-	90     , //Default Upper Ambient Temperature Min
-	100    , //Default Upper Ambient Temperature Max
-	90     , //Default Lower Ambient Temperature Min
-	100    , //Default Lower Ambient Temperature Max
-	6000   , //Default Overpowered Min
-	6200   , //Default Overpowered Max
-	3      , //Default Reserved 
-	0      , //Default Reserved
-	1600    , //Default Current limit
-	270    , //Default Under Voltage Limit
-	6000   , //Default overload Limt
-	2200   , //Default OverSpeed Limit
-	120    , //Default Ipm Temperature Limit
-	120    , //Default Winding Temperature Limit
-	495    , //Default Over Rms Voltage Limit
-	320    , //Default Under Rms Voltage Limit
-	0      , //Default Reserved
-	0      , //Default Reserved
-	0      , //Default Reserved 
-	0      , //Default Reserved
-	540    , //Default Recovery Dc Over voltage limit
-	350    , //Default Recovery DC Under Voltage Limit
-	5700   , //Default Recovery overload limit
-	1900   , //Default Recovery overspeed limit 
-	5      , //Default Anti lock Retries rotor lock
-	100     , //Default Recovery ipm temperature limit
-	110     , //Default Recovery Winding Temperature limit
-	440    , //Default Recovery over ac voltage limit
-	350    , //Default Recovery under ac voltage limit
-	0      , //Default Reserved
-	0      , //Default Reserved
-	0      , //Default Reserved
-	0      , //Default Reserved
-	0      , //Default Reserved
-	0      , //Default Reserved
-	0      , //Default Reserved
-	1      , //Default Led Mode
-	1      , //Default K1 Function
-	0      , //Default VibFrq_1
-	0      , //Default VibFrq_2
-	0      , //Default VibFrq_3
-	0      , //Default VibFrq_4
-	0      , //Default VibFrq_5
-	0      , //Default VibFrq_6
-	0      , //Default VibFrq_7
-	0      , //Default VibFrq_8
-	0      , //Default VibFrq_9
-	0      , //Default VibFrq_10
-	0      , //Default VibFrq_11
-	0      , //Default VibFrq_12
-	0      , //Default VibFrq_13
-	0      , //Default VibFrq_14
-	0      , //Default VibFrq_15
-	9      , //Default MOTORMODEL1
-	9      , //Default MOTORMODEL2
-	9      , //Default MOTORMODEL3
-	9      , //Default MOTORMODEL4
-	9      , //Default MOTORMODEL5
-	9      , //Default MOTORMODEL6
-	9      , //Default MOTORMODEL7
-	9      , //Default MOTORMODEL8
-	8      , //Default MOTORMACHINE1
-	8      , //Default MOTORMACHINE2
-};
-
-__attribute__((at(HOLDING_REG_DEFAULT_START_ADDR_LOW))) 
-const uint32_t Holding_Reg_Default_Start_Addr_lOW[] = {
-	8      , //Default MOTORMACHINE3
-	8      , //Default MOTORMACHINE4
-	8      , //Default MOTORMACHINE5
-	8      , //Default MOTORMACHINE6
-	2026   , //Default MOTORPRODUCTION_YEAR
-	1      , //Default MOTORPRODUCTION_MONTH
-	1      , //Default MOTORPRODUCTION_DAY
-	1      , //Default DRIVEMODELNAME1
-	1      , //Default DRIVEMODELNAME2
-	1      , //Default DRIVEMODELNAME3
-	1      , //Default DRIVEMODELNAME4
-	1      , //Default DRIVEMODELNAME5
-	1      , //Default DRIVEMODELNAME6
-	1      , //Default DRIVEMODELNAME7
-	1      , //Default DRIVEMODELNAME8 
-	2      , //Default DRIVEMACHINENUMBER1
-	2      , //Default DRIVEMACHINENUMBER2
-	2      , //Default DRIVEMACHINENUMBER3
-	2      , //Default DRIVEMACHINENUMBER4
-	2      , //Default DRIVEMACHINENUMBER5
-	2      , //Default DRIVEMACHINENUMBER6
-	2026   , //Default DRIVEPRODUCTION_YEAR
-	1      , //Default DRIVEPRODUCITON_MONTH
-	1      , //Default DRIVEPRODUCITON_DAY
-	12     , //Default Rated Current
-	380    , //Default Drive input voltage min range
-	480    , //Default Drive input voltage max range
-	15     , //Default maximum current rating
-	6000   , //Default output max power
-	60     , //Default frequency max range 
-	50     , //Default Frequency min range
-	60     , //Default frequency max range
-	50     , //Default frequency min range
-	5700   , //Default power rating
-	0      , //Default Reserved
-	0      , //Default Reserved
-	50     , //Default line input frequency min range
-	60     , //Default line input frequency max range
-	6      , //Default no of poles
-	15     , //Default Torque Constant
-	0			 , //Default Rated Torque
-	0      , //Default Reserved  
-	0      , //Default Reserved
-	0      , //Default Reserved
-	0      , //Default Reserved
-	0      , //Default Flash Writing
-	0      , //Default Set Default factory
-	0      , //Default Reserved  
-	0      , //Default Reserved 
-	4000   , //Default Switching Frequency
-	0      , //Default Block protection Change of Direction
-	0			 , //BMS Function 
-	0			 , //Reset Events
-	0			 , //Static Pressure Filter   
-	500    , //Remaing Service Life 
-	0      , //Drive is configured from the software
-	111,
+		1,/*HOLDING_NODE_ADDRESS_DEFAULT*/
+		2,/*HOLDING_BAUD_RATE_DEFAULT*/
+		0,/*HOLDING_PARITY_SET_DEFAULT*/
+		0,/*HOLDING_STOP_BIT_DEFAULT*/
+		1,/*HOLDING_CONTROL_MODE_DEFAULT*/
+		1800,/*HOLDING_SET_SPEED_IN_MODBUS_SIGNAL_LOSS_MODE_DEFAULT*/
+		1800,/*HOLDING_SET_SPEED_IN_FIRE_ALARAM_MODE_DEFAULT*/
+		1800,/*HOLDING_DEFAULTIMUM_SPEED_DEFAULT*/
+		100,/*HOLDING_TARGET_SPEED_FROM_MODBUS_DEFAULT*/
+		0,/*HOLDING_FAN_ROTATION_DEFAULT*/
+		10,/*HOLDING_RAMP_UP_TIME_DEFAULT*/
+		10,/*HOLDING_RAMP_DOWN_TIME_DEFAULT*/
+		0,/*HOLDING_FIRE_ALARM_MODE_SOURCE_DEFAULT*/
+		0,/*HOLDING_FIRE_ALARM_ACTIVATE_DEFAULT*/
+		1,/*HOLDING_DI1_FUNCTION_DEFAULT*/
+		0,/*HOLDING_DI2_FUNCTION_DEFAULT*/
+		720,/*HOLDING_SET_FILTER_RUN_HOURS_DEFAULT*/
+		0,/*HOLDING_RESET_FILTER_RUN_HOURS_DEFAULT*/
+		2,/*HOLDING_AI1_DEFAULTIMUM_VALUE_DEFAULT*/
+		12000,/*HOLDING_SWITCHING_FREQUENCY_DEFAULT*/
+		8,/*HOLDING_AI1_DEFAULTIMUM_VALUE_DEFAULT*/
+		0,/*HOLDING_PID_SENSOR_SELECT_DEFAULT*/     //PID REGISTER 
+		0,/*HOLDING_RESERVED_23_DEFAULT*/
+		0,/*HOLDING_RESERVED_24_DEFAULT*/
+		1,/*HOLDING_RESERVED_25_DEFAULT*/
+		0,/*HOLDING_RESERVED_26_DEFAULT*/
+		0,/*HOLDING_RESERVED_27_DEFAULT*/
+		0,/*HOLDING_RESERVED_28_DEFAULT*/
+		0,/*HOLDING_RESERVED_29_DEFAULT*/
+		0,/*HOLDING_RESERVED_30_DEFAULT*/
+		0,/*HOLDING_SET_DEFAULT_FACTORY_DEFAULT*/
+		400,/*HOLDING_RESERVED_32_DEFAULT*/
+		525,/*HOLDING_RESERVED_33_DEFAULT*/
+		650,/*HOLDING_RESERVED_34_DEFAULT*/
+		775,/*HOLDING_RESERVED_35_DEFAULT*/
+		900,/*HOLDING_RESERVED_36_DEFAULT*/
+		1025,/*HOLDING_RESERVED_37_DEFAULT*/
+		1150,/*HOLDING_RESERVED_38_DEFAULT*/
+		1275,/*HOLDING_RESERVED_39_DEFAULT*/
+		1400,/*HOLDING_RESERVED_40_DEFAULT*/
+		1525,/*HOLDING_RESERVED_41_DEFAULT*/
+		1650,/*HOLDING_RESERVED_42_DEFAULT*/
+		1775,/*HOLDING_RESERVED_43_DEFAULT*/
+		1900,/*HOLDING_RESERVED_44_DEFAULT*/
+		2025,/*HOLDING_RESERVED_45_DEFAULT*/
+		2150,/*HOLDING_RESERVED_46_DEFAULT*/
+		0,/*HOLDING_BMS_FUNCTION_DEFAULT*/
+		0,/*HOLDING_SUPPRESSION_RANGE_SETTING_DEFAULT*/
+		300,/*HOLDING_RANGE_DEFAULT_SPEED_DEFAULT*/
+		450,/*HOLDING_RANGE_DEFAULT_SPEED_DEFAULT*/
+		0,/*HOLDING_RANGE_DEFAULT_WINDING_TEMPERATUE_DEFAULT*/
+		0,/*HOLDING_RANGE_DEFAULT_WINDING_TEMPERATUE_DEFAULT*/
+		0,/*HOLDING_RANGE_DEFAULT_MOTOR_CURRENT_DEFAULT*/
+		0,/*HOLDING_RANGE_DEFAULT_MOTOR_CURRENT_DEFAULT*/
+		0,/*HOLDING_PID_CONFIGURATION_DIFFERENTIAL_PRESSURE_SET_VALUE_DEFAULT*/
+		0,/*HOLDING_DIFFERENTIAL_PRESSURE_RANGE_DEFAULT_DEFAULT*/
+		0,/*HOLDING_DIFFERNETIAL_PRESEURE_RANGE_DEFAULT_DEFAULT*/
+		0,/*HOLDING_PRESSURE_SPEED_DEFAULT_DEFAULT*/
+		0,/*HOLDING_PRESSURE_SPEED_DEFAULT_DEFAULT*/
+		0,/*HOLDING_PID_CONFIGURATION_DIFFERNETIAL_TEMPERAUTE_SET_VALUE_DEFAULT*/
+		90,/*HOLDING_OVER_WINDING_TEMPERATURE_LIMIT_DEFAULT_VALUE*/
+		80,/*HOLDING_RECOVERY_WINDING_TEMPERATURE_LIMIT_DEFAULT_VALUE*/
+		0,/*HOLDING_DIFFERNTIAL_TEMPERATURE_SPEED_DEFAULT_DEFAULT*/
+		0,/*HOLDING_DIFFERNTIAL_TEMPERATURE_SPEED_DEFAULT_DEFAULT*/
+		0,/*HOLDING_PID_CONFIGURE_FLOW_RATE_SET_VALUE_DEFAULT*/
+		0,/*HOLDING_FLOW_RATE_RANGE_DEFAULT_DEFAULT*/
+		0,/*HOLDING_FLOW_RATE_RANGE_DEFAULT_DEFAULT*/
+		0,/*HOLDING_FLOW_SPEED_DEFAULT_DEFAULT*/
+		0,/*HOLDING_FLOW_SPEED_DEFAULT_DEFAULT*/
+		1,/*HOLDING_K1_FUNCTION_DEFAULT*/
+		700,/*HOLDING_SET_INTERNAL_1_DEFAULT*/
+		700,/*HOLDING_SET_INTERNAL_2_DEFAULT*/
+		700,/*HOLDING_SET_INTERNAL_3_DEFAULT*/
+		400,/*HOLDING_DEFAULT_SPEED_DEFAULT*/
+		0,/*HOLDING_RESERVED_75_DEFAULT*/
+		0,/*HOLDING_CONTROL_BITS_DEFAULT*/
+		0,/*HOLDING_RESERVED_77_DEFAULT*/
+		1,/*HOLDING_LED_MODE_DEFAULT*/
+		0,/*HOLDING_RESERVED_79_DEFAULT*/
+		0,/*HOLDING_RESERVED_80_DEFAULT*/
+		0,/*HOLDING_RESERVED_81_DEFAULT*/
+		0,/*HOLDING_RESERVED_82_DEFAULT*/
+		0,/*HOLDING_RESERVED_83_DEFAULT*/
+		0,/*HOLDING_RESERVED_84_DEFAULT*/
+		0,/*HOLDING_RESERVED_85_DEFAULT*/
+		0,/*HOLDING_RESERVED_86_DEFAULT*/
+		0,/*HOLDING_RESERVED_87_DEFAULT*/
+		0,/*HOLDING_RESERVED_88_DEFAULT*/
+		15,/*HOLDING_OVER_CURRENT_LIMIT_DEFAULT*/
+		0,/*HOLDING_BLOCKING_PROTECTION_CHANGE_OF_DIRECTION_DEFAULT*/
+	  11,/*HOLDING_RECOVERY_CURRENT_LIMIT_DEFAULT*/
+		0,/*HOLDING_RESET_DEFAULT*/
+		0,/*HOLDING_ANTI_LOCK_RETIES_ROTOR_LOCK_DEFAULT*/
+		360,/*HOLDING_OVER_VOLTAGE_LIMIT_DEFAULT*/
+		300,/*HOLDING_RECOVERY_OVER_VOLTAGE_LIMIT_DEFAULT*/
+		0,/*HOLDING_SENSOR_PRESSURE_UNIT_DEFAULT*/
+		0,/*HOLDING_SENSOR_TEMPERATURE_UNIT_DEFAULT*/
+		0,/*HOLDING_SENSOR_FLOW_UNIT_DEFAULT*/
+		80,/*HOLDING_UNDER_VOLTAGE_FAULT_LIMIT_DEFAULT*/
+		150,/*HOLDING_RECOVERY_VOLTAGE_FAULT_LIMIT_DEFAULT*/
+		6000,/*HOLDING_OVER_LOAD_LIMIT_DEFAULT*/
+		5700,/*HOLDING_RECOVERY_OVER_LOAD_LIMIT_DEFAULT*/
+		2500,/*HOLDING_OVER_SPEED_LIMIT_DEFAULT*/
+		0,/*HOLDING_MOTOR_MODEL_NAME_104_DEFAULT*/
+		0,/*HOLDING_MOTOR_MODEL_NAME_105_DEFAULT*/
+		0,/*HOLDING_MOTOR_MODEL_NAME_106_DEFAULT*/
+		0,/*HOLDING_MOTOR_MODEL_NAME_107_DEFAULT*/
+		0,/*HOLDING_MOTOR_MODEL_NAME_108_DEFAULT*/
+		0,/*HOLDING_MOTOR_MODEL_NAME_109_DEFAULT*/
+		0,/*HOLDING_MOTOR_MODEL_NAME_110_DEFAULT*/
+		0,/*HOLDING_MOTOR_MODEL_NAME_111_DEFAULT*/
+		0,/*HOLDING_MOTOR_MACHINE_NUMBER_112_DEFAULT*/
+		0,/*HOLDING_MOTOR_MACHINE_NUMBER_113_DEFAULT*/
+		0,/*HOLDING_MOTOR_MACHINE_NUMBER_114_DEFAULT*/
+		0,/*HOLDING_MOTOR_MACHINE_NUMBER_115_DEFAULT*/
+		0,/*HOLDING_MOTOR_MACHINE_NUMBER_116_DEFAULT*/
+		0,/*HOLDING_MOTOR_MACHINE_NUMBER_117_DEFAULT*/
+		0,/*HOLDING_MOTOR_PRODUCTION_YEAR_DEFAULT*/
+		0,/*HOLDING_MOTOR_PRODUCTION_MONTH_DEFAULT*/
+		0,/*HOLDING_MOTOR_PRODUCTION_DAY_DEFAULT*/
+		0,/*HOLDING_MODEL_NAME_121_DEFAULT*/
+		0,/*HOLDING_MODEL_NAME_122_DEFAULT*/
+		0,/*HOLDING_MODEL_NAME_123_DEFAULT*/
+		0,/*HOLDING_MODEL_NAME_124_DEFAULT*/
+		0,/*HOLDING_MODEL_NAME_125_DEFAULT*/
+		0,/*HOLDING_MODEL_NAME_126_DEFAULT*/
+		0,/*HOLDING_MODEL_NAME_127_DEFAULT*/
+		0,/*HOLDING_MODEL_NAME_128_DEFAULT*/
+		0,/*HOLDING_MACHINE_NUMBER_129_DEFAULT*/
+		0,/*HOLDING_MACHINE_NUMBER_130_DEFAULT*/
+		0,/*HOLDING_MACHINE_NUMBER_131_DEFAULT*/
+		0,/*HOLDING_MACHINE_NUMBER_132_DEFAULT*/
+		0,/*HOLDING_MACHINE_NUMBER_133_DEFAULT*/
+		0,/*HOLDING_MACHINE_NUMBER_134_DEFAULT*/
+		0,/*HOLDING_MACHINE_PRODUCTION_YEAR_DEFAULT*/
+		0,/*HOLDING_MACHINE_PRODUCITON_MONTH_DEFAULT*/
+		0,/*HOLDING_MACHINE_PRODUCITON_DAY_DEFAULT*/
+		0,/*HOLDING_RATED_POWER_RATING_DEFAULT*/
+		1800,/*HOLDING_RECOVERY_OVER_SPEED_LIMIT_DEFAULT*/
+		90,/*HOLDING_OVER_IPM_TEMPERATURE_LIMIT_DEFAULT*/
+		12,/*HOLDING_RATED_CURRENT_DEFAULT*/
+		80,/*HOLDING_RECOVERY_IPM_TEMPERATURE_LIMIT_DEFAULT*/
+		8,/*HOLDING_NO_OF_POLES_DEFAULT*/
+		0,/*HOLDING_RESERVED_144_DEFAULT*/
+		0,/*HOLDING_RATED_TORQUE_DEFAULT*/
+		600,/*HOLDING_DRIVE_INPUT_VOLTAGE_DEFAULT_RANGE_DEFAULT*/
+		5700,/*HOLDING_DRIVE_DEFAULTIMUM_OUTPUT_DEFAULT_POWER_DEFAULT*/
+		12,/*HOLDING_DRIVE_DEFAULTIMUM_CURRENT_RATING_DEFAULT*/
+		60,/*HOLDING_DRIVE_FRQUENCY_DEFAULT_RANGE_DEFAULT*/
+		70,/*HOLDING_TEMPERATURE_DEFAULT_WORKING_RANGE_DEFAULT*/
+	  70,/*HOLDING_TEMPERATURE_DEFAULT_WORKING_RANGE_DEFAULT*/
+		80,/*HOLDING_RANGE_DEFAULT_IGBT_TEMPERATUE_DEFAULT*/
+		80,/*HOLDING_RANGE_DEFAULT_IGBT_TEMPERATUE_DEFAULT*/
+		720,/*HOLDING_DRIVE_INPUT_VOLTAGE_DEFAULT_RANGE_DEFAULT*/
+		50,/*HOLDING_DRIVE_FRQUENCY_DEFAULT_RANGE_DEFAULT*/
+		50,/*HOLDING_INPUT_FREQUENCY_DEFAULT_RANGE_DEFAULT*/
+		50,/*HOLDING_INPUT_FREQUENCY_DEFAULT_RANE_DEFAULT*/
+		55,/*HOLDING_TORQUE_CONSTANT_DEFAULT*/
+		0,/*HOLDING_FAIL_SAFE_ON_OFF_DEFAULT*/
+		1,/*HOLDING_FAIL_SAFE_RUNNING_DIRECTION_DEFAULT*/
+		800,/*HOLDING_FAIL_SAFE_FUNCTION_SET_SPEED_DEFAULT*/
+		0,/*HOLDING_FAIL_SAFE_SOURCE_DEFAULT*/
+		2,/*HOLDING_FAIL_SAFE_ACTIVATE_SET_VALUE_DEFAULT*/
+		163,/*HOLDING_TOTAL_MEMBER_DEFAULT*/
 	};

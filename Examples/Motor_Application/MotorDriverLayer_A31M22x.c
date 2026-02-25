@@ -156,7 +156,7 @@ void USER_ADC_Init(void)
 		| (0 << 24)   // SEQ7CH  
 		| (0 << 16)   // SEQ6CH
 		| (0 << 8) 	  // SEQ5CH 
-		| (6 << 0)  	// SEQ4CH (AN6 , Vref)    6
+		| (0 << 0)  	// SEQ4CH (AN6 , Vref)    6
 		;
 
 	ADC->CR = 0
@@ -286,37 +286,37 @@ void MDL_PCU_Init(void)
 		| (0x01UL << PCU_MR1_P5MUX_Pos)  // 0 : PB5,  1 : MPWMWL  2 :       3 :       4 :  7 :   ||-----ANALOG PWM
 		| (0x00UL << PCU_MR1_P4MUX_Pos)  // 0 : PB4,  1 : MPWMWH  2 :       3 :       4 :  7 :   ||-----CMP1
 		| (0x00UL << PCU_MR1_P3MUX_Pos)  // 0 : PB3,  1 : MPWMVL  2 : MISO  3 :       4 :  7 :   ||-----CMP2
-		//| (0x00UL << PCU_MR1_P2MUX_Pos)  // 0 : PB2,  1 : MPWMVH  2 : MOSI  3 :       4 :  7 :   ||-----SWITCH 1  
-		//| (0x00UL << PCU_MR1_P1MUX_Pos)  // 0 : PB1,  1 : MPWMUL  2 : SCK   3 :       4 :  7 :   ||-----SWITCH 2
-		//| (0x00UL << PCU_MR1_P0MUX_Pos)  // 0 : PB0,  1 : MPWMUH  2 : SS    3 :       4 :  7 :   ||-----SWITCH 3 
+		| (0x00UL << PCU_MR1_P2MUX_Pos)  // 0 : PB2,  1 : MPWMVH  2 : MOSI  3 :       4 :  7 :   ||-----SWITCH 1  
+		| (0x00UL << PCU_MR1_P1MUX_Pos)  // 0 : PB1,  1 : MPWMUL  2 : SCK   3 :       4 :  7 :   ||-----SWITCH 2
+		| (0x00UL << PCU_MR1_P0MUX_Pos)  // 0 : PB0,  1 : MPWMUH  2 : SS    3 :       4 :  7 :   ||-----SWITCH 3 
 		;
 
 	PB->CR = 0x00 // 0 : Push-pull output, 1 : Open-drain output, 2 / 3 : Input
 		| (0x00UL << PCU_CR_P7_Pos)  // PB7, ||------DIGITAL PWM
 		| (0x00UL << PCU_CR_P6_Pos)  // PB6, ||------Not Used
-		| (0x00UL << PCU_CR_P5_Pos)  // PB5, ||------ANALOG PWM (WL)   
+		| (0x01UL << PCU_CR_P5_Pos)  // PB5, ||------ANALOG PWM (WL)   
 		| (0x03UL << PCU_CR_P4_Pos)  // PB4, ||------CMP1
 		| (0x03UL << PCU_CR_P3_Pos)  // PB3, ||------CMP2
-		//| (0x03UL << PCU_CR_P2_Pos)  // PB2, ||------SWITCH 1 
-	//	| (0x03UL << PCU_CR_P1_Pos)  // PB1, ||------SWITCH 2 
-	//	| (0x03UL << PCU_CR_P0_Pos)  // PB0, ||------SWITCH 3 
+		| (0x03UL << PCU_CR_P2_Pos)  // PB2, ||------SWITCH 1 
+		| (0x03UL << PCU_CR_P1_Pos)  // PB1, ||------SWITCH 2 
+		| (0x03UL << PCU_CR_P0_Pos)  // PB0, ||------SWITCH 3 
 		;
 
 	PB->PRCR = 0x00 // 0 / 1 : Disable pull-up/down resistor, 2 : Enable pull-up resistor, 3 : Enable Pull-down resistor
 		| (0x03UL << PCU_PRCR_PUE7_Pos)  // PB7 ||-----DIGITAL PWM
 		| (0x03UL << PCU_PRCR_PUE6_Pos)  // PB6 ||-----Not Used
-		| (0x03UL << PCU_PRCR_PUE5_Pos)  // PB5 ||-----ANALOG PWM
+		| (0x01UL << PCU_PRCR_PUE5_Pos)  // PB5 ||-----ANALOG PWM
 		| (0x03UL << PCU_PRCR_PUE4_Pos)  // PB4 ||-----CMP1
 		| (0x03UL << PCU_PRCR_PUE3_Pos)  // PB3 ||-----CMP2
-		//| (0x03UL << PCU_PRCR_PUE2_Pos)  // PB2 ||-----SWITCH 1 
-	//	| (0x03UL << PCU_PRCR_PUE1_Pos)  // PB1 ||-----SWITCH 2
-	//	| (0x03UL << PCU_PRCR_PUE0_Pos)  // PB0 ||-----SWITCH 3 
+		| (0x03UL << PCU_PRCR_PUE2_Pos)  // PB2 ||-----SWITCH 1 
+		| (0x03UL << PCU_PRCR_PUE1_Pos)  // PB1 ||-----SWITCH 2
+		| (0x03UL << PCU_PRCR_PUE0_Pos)  // PB0 ||-----SWITCH 3 
 		;
 
 	// PORT - C
 	PC->MR2 = 0x00UL
 		| (0x00UL << PCU_MR2_P15MUX_Pos) // 0 : PC15,  1 : TXD0    2 :       3 : PRTIN  4 : MISO  7 :
-	//	| (0x00UL << PCU_MR2_P14MUX_Pos) // 0 : PC14,  1 : RXD0    2 : CLKO  3 : OVIN   4 : MOSI  7 :           ||-----SWITCH 4 
+		| (0x00UL << PCU_MR2_P14MUX_Pos) // 0 : PC14,  1 : RXD0    2 : CLKO  3 : OVIN   4 : MOSI  7 :           ||-----SWITCH 4 
 		| (0x07UL << PCU_MR2_P13MUX_Pos) // 0 : PC13,  1 : T2IO    2 :       3 :        4 :       7 : XOUT    
 		| (0x07UL << PCU_MR2_P12MUX_Pos) // 0 : PC12,  1 : T3IO    2 :       3 :        4 :       7 : XIN
 		| (0x01UL << PCU_MR2_P11MUX_Pos) // 0 : PC11,  1 : BOOT    2 : T0IO  3 :        4 :       7 :
@@ -332,7 +332,7 @@ void MDL_PCU_Init(void)
 
 	PC->CR = 0x00 // 0 : Push-pull output, 1 : Open-drain output, 2 / 3 : Input
 		| (0x00UL << PCU_CR_P15_Pos) // PC15, DAC LD
-	//	| (0x03UL << PCU_CR_P14_Pos) // PC14, ||-----SWITCH 4 
+		| (0x03UL << PCU_CR_P14_Pos) // PC14, ||-----SWITCH 4 
 		| (0x00UL << PCU_CR_P13_Pos) // PC13, XOUT
 		| (0x00UL << PCU_CR_P12_Pos) // PC12, XIN
 		| (0x00UL << PCU_CR_P11_Pos) // PC11, nBOOT
@@ -345,7 +345,7 @@ void MDL_PCU_Init(void)
 
 	PC->PRCR = 0x00 // 0 / 1 : Disable pull-up/down resistor, 2 : Enable pull-up resistor, 3 : Enable Pull-down resistor
 		| (0x00UL << PCU_PRCR_PUE15_Pos) // PC15
-	//	| (0x03UL << PCU_PRCR_PUE14_Pos) // PC14  ||-----SWITCH 4 
+		| (0x03UL << PCU_PRCR_PUE14_Pos) // PC14  ||-----SWITCH 4 
 		| (0x00UL << PCU_PRCR_PUE13_Pos) // PC13
 		| (0x00UL << PCU_PRCR_PUE12_Pos) // PC12
 		| (0x00UL << PCU_PRCR_PUE11_Pos) // PC11

@@ -40,4 +40,3 @@
 .\out\flash_writing.o: ..\A31M22x\Digital_Pwm_Output.h
 .\out\flash_writing.o: ..\..\..\..\Drivers\A31M22x\include\A31M22x_cfmc.h
 .\out\flash_writing.o: ..\..\..\..\Drivers\A31M22x\include\debug_frmwrk.h
-.\out\flash_writing.o: LVD_Status.h

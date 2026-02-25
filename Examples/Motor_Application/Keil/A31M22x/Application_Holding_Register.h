@@ -102,7 +102,7 @@ typedef struct{
 }ControlMode_t;
 
 extern VdcFilt_t vdcfilt;
-extern uint16_t g_Nodeaddress_Read,Flash_Nodeaddress;
+
 extern ControlMode_t controlmode;
 extern InternalRpm_t InternalRPM;
 extern BypassTMPMGMT_t BypassTmppmgmt;
@@ -114,6 +114,7 @@ int FailSafeControl(void);
 int MAXIMUM_SPEED(void);
 int MINIMUM_SPEED(void);
 int FAN_ROTATION(void);
+void SWITCHING_FREQUENCY(void);
 void SuppressionSelection(void);
 int SET_INTERNAL_RPM_1(void);
 int SET_INTERNAL_RPM_2(void);

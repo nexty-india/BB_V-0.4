@@ -45,4 +45,3 @@
 .\out\ai1_sensor_status.o: Bharat_Bijlee.h
 .\out\ai1_sensor_status.o: MODBUS_Status.h
 .\out\ai1_sensor_status.o: Application_Holding_Register.h
-.\out\ai1_sensor_status.o: DI1_Status.h

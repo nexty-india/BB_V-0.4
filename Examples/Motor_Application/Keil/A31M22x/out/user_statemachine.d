@@ -41,14 +41,14 @@
 .\out\user_statemachine.o: Digital_Pwm_Output.h
 .\out\user_statemachine.o: Modbus_Input_Register.h
 .\out\user_statemachine.o: Application_Input_Register.h
-.\out\user_statemachine.o: Fault_Status.h
-.\out\user_statemachine.o: Modbus_Status.h
 .\out\user_statemachine.o: Application_Holding_Register.h
 .\out\user_statemachine.o: Bharat_Bijlee.h
+.\out\user_statemachine.o: MODBUS_Status.h
 .\out\user_statemachine.o: Flash_Writing.h
 .\out\user_statemachine.o: ..\..\..\..\Drivers\A31M22x\include\A31M22x_cfmc.h
 .\out\user_statemachine.o: ..\..\..\..\Drivers\A31M22x\include\debug_frmwrk.h
 .\out\user_statemachine.o: DI1_Status.h
+.\out\user_statemachine.o: Fault_Status.h
 .\out\user_statemachine.o: Relay_Status.h
 .\out\user_statemachine.o: AI1_Sensor_Status.h
 .\out\user_statemachine.o: ..\..\..\Motor_Application\MotorDriverLayer.h

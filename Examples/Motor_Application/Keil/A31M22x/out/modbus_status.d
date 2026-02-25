@@ -42,7 +42,6 @@
 .\out\modbus_status.o: ..\A31M22x\user_timer.h
 .\out\modbus_status.o: Modbus_Input_Register.h
 .\out\modbus_status.o: Application_Input_Register.h
-.\out\modbus_status.o: Fault_Status.h
 .\out\modbus_status.o: Bharat_Bijlee.h
 .\out\modbus_status.o: Application_Holding_Register.h
 .\out\modbus_status.o: AI1_Sensor_Status.h
@@ -50,4 +49,3 @@
 .\out\modbus_status.o: ..\..\..\..\Drivers\A31M22x\include\a31m22x_adc.h
 .\out\modbus_status.o: ..\..\..\Motor_Application\a31m22x_libcfg.h
 .\out\modbus_status.o: ..\..\..\..\Drivers\A31M22x\include\a31m22x_spi.h
-.\out\modbus_status.o: Di1_Status.h

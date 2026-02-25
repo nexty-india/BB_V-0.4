@@ -11,29 +11,13 @@
 #include "MotorDriverLayer.h"
 
 
-#define G_Counter 100
-typedef struct{
-	int TargetSetPoint;
-	int Actual_SensorValue;
-	float Kp_Constant;
-	float Ki_Constant;
-	float Control_Signal;
-	int Error_siganl;
-	float Target_Rpm;
-	float Proportional_Output;
-	float Integral_Output;
-	int Control_signalMaxlimit;
-	int Control_signalMinlimit;
-	int Minumumrpm;
-}PID_Sensor_t;
-
-
-extern PID_Sensor_t pid_sensor;
-
-extern uint16_t g_Analog_4_20_ma_filt;
-int PidSensorCalculation(void);
+extern uint16_t Analog_4_20_ma_filt;
+static int PID_SENSOR_EXECUTE(void);
+static int ANALOG_DIFFERENTIAL_PID_MODE(void);
+static int ANALOG_TEMPERATURE_PID_MODE(void);
+static int ANALOG_FLOW_SENSOR_PID_MODE(void);
 static int ANALOG_SENSE_4_20MA(void);
 static int ANALOG_SENSE_4_20MA_FILT(void);
-void PIDinit(void);
+static void PID_Sensor_RPM_ENABLE(void); 
 
 #endif

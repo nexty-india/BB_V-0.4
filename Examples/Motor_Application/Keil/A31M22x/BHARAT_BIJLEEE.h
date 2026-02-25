@@ -17,7 +17,7 @@
 
 #include "user_timer.h"
 
-//#define NODEADDRESS							 0x0000F000U
+#define NODEADDRESS							 0x0000F000U
 #define ONE_MILLISECND_COUNTER   1000
 
 typedef enum{
@@ -27,10 +27,10 @@ typedef enum{
 }DriveStatemachine_t;
 
 
-extern uint16_t onesec;
+//extern uint16_t g_One_millisecond;
 void DriveStateMachine(void);
 void DriveSystem(void);
-extern uint16_t g_flash_value;
+
 extern DriveStatemachine_t DRIVESTATEMACHINE;
 
 

@@ -18,7 +18,7 @@ typedef enum{
 
 
 extern uint16_t g_target_Speed;
-extern uint8_t Control_mode;
+
 static void MODBUS_STAUTS_CHECK(void);
 void CONTROL_MODE_SELECT(void);
 void READ_RPM_SET_STATUS(void);

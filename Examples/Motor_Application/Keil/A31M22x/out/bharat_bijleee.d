@@ -46,8 +46,3 @@
 .\out\bharat_bijleee.o: Modbus_Status.h
 .\out\bharat_bijleee.o: Application_Input_Register.h
 .\out\bharat_bijleee.o: Application_Holding_Register.h
-.\out\bharat_bijleee.o: PID_Sensor_Status.h
-.\out\bharat_bijleee.o: ..\..\..\Motor_Application\MotorDriverLayer.h
-.\out\bharat_bijleee.o: ..\..\..\..\Drivers\A31M22x\include\a31m22x_adc.h
-.\out\bharat_bijleee.o: ..\..\..\Motor_Application\a31m22x_libcfg.h
-.\out\bharat_bijleee.o: ..\..\..\..\Drivers\A31M22x\include\a31m22x_spi.h

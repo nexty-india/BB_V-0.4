@@ -545,6 +545,11 @@
               <FilePath>.\Application_Holding_Register.c</FilePath>
             </File>
             <File>
+              <FileName>Modbus_Error.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Modbus_Error.c</FilePath>
+            </File>
+            <File>
               <FileName>DI1_Status.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\DI1_Status.c</FilePath>
@@ -588,11 +593,6 @@
               <FileName>Suppression_Setting.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\Suppression_Setting.c</FilePath>
-            </File>
-            <File>
-              <FileName>LVD_Status.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\LVD_Status.c</FilePath>
             </File>
           </Files>
         </Group>
