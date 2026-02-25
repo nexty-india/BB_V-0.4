@@ -7,12 +7,11 @@
 #include <inttypes.h>
 #include <stdarg.h>
 #include "NXP_Comm_uart.h"
-
+#include "Application_Input_Register.h"
 uint64_t sys_counter = 0;
 bool ms_elapsed = false;
 extern UART_COMM_PARA_t uart_comm;
 extern SYSTEM_DRIVE_EVENT_t SYSTEM_DRIVE_EVENT;
-uint16_t counter_150_ms;
 /**
  * @brief Timer interrupt handler for application-level timing events.
  *
@@ -32,7 +31,10 @@ void app_timer_irq_handler(uint32_t event, void *context)
 		// Increment system counter 
 		sys_counter++;
 		
-//		g_One_millisecond++;
+		onesec++;
+		g_milliseconscounter++;
+		g_milliseconscounter_Remaing++;
+		//g_tesecondcounter++;
 		SYSTEM_DRIVE_EVENT.DRIVE_STATUS.SYSTEM_EVENT_1_MS_PERIODIC = 1;		
 	}
 }
@@ -46,13 +48,13 @@ void USER_TIMER0_Init(void)
 	 
 	cfg.mode = TIMER_MODE_PERIODIC;         // Configure the timer for periodic mode
 	cfg.clk_sel = TIMER_CLK_DIV_16_PCLK;      // Set clock source: PCLK divided by 16
-	cfg.prescaler = 20;												// Set prescaler value to further divide the input clock
+	cfg.prescaler = 21;												// Set prescaler value to further divide the input clock
 	cfg.adc_trig = TIMER_ADC_TRIG_ENABLE;   // Disable ADC trigger from this timer
 	cfg.irq_prio = DRIVER_PRIORITY_LOWEST;   // Set lowest interrupt priority for the timer
 	
 	/* Initialize Timer */
 	HAL_TIMER_Init(TIMER_ID_0, &cfg, app_timer_irq_handler, NULL);  /* Initialize Timer 0 with the above configuration */
-	HAL_TIMER_Start(TIMER_ID_0, 0xF0);   // Start Timer 0 with a load value (reload count) of 0xF0
+	HAL_TIMER_Start(TIMER_ID_0, 0xEF);   // Start Timer 0 with a load value (reload count) of 0xEF
 } 
 
 /**

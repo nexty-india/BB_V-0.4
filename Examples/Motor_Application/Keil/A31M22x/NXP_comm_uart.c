@@ -1,13 +1,17 @@
 #include "NXP_Comm_uart.h"
 
-UART_COMM_PARA_t uart_comm;
-TRANSMIT_PARA_t transmit_para;
-UART__FORMAT uart_format;
-Modbus_Parameter modbus_parameter;
-MOTOR_UART_t Motor_Uart;
-uint16_t g_Transmit_Complete,g_Transmit_Timer;
+UART_COMM_PARA_t   uart_comm;
+TRANSMIT_PARA_t    transmit_para;
+UART__FORMAT       uart_format;
+Modbus_Parameter   modbus_parameter;
+MOTOR_UART_t       Motor_Uart;
+
+uint16_t g_Transmit_Complete;
+uint16_t g_Transmit_Timer;
 uint16_t g_Idle_line_counter;
-uint8_t g_Index_Parameter_counter;
+
+uint8_t  g_Index_Parameter_counter;
+
 /**
  * @brief UART0 interrupt handler
  *
@@ -261,9 +265,12 @@ volatile	uint8_t checksum_temp=0;
 			break;
 			
 			case UART_FRAME_INDEX_READ_FAULT_STATUS:
-				uart_comm.TRANSMIT_DATA[data_high_bit_add]= modbus_parameter.MODBUS_FAULT_STATUS>>8;
-			  uart_comm.TRANSMIT_DATA[data_low_bit_add]= modbus_parameter.MODBUS_FAULT_STATUS&0xFF;
-				uart_comm.TRANSMIT_DATA[write_read_add] =  WRITE_BYTE;	
+//				uart_comm.TRANSMIT_DATA[data_high_bit_add]= modbus_parameter.MODBUS_FAULT_STATUS>>8;
+//			  uart_comm.TRANSMIT_DATA[data_low_bit_add]= modbus_parameter.MODBUS_FAULT_STATUS&0xFF;
+//				uart_comm.TRANSMIT_DATA[write_read_add] =  WRITE_BYTE;	
+			uart_comm.TRANSMIT_DATA[write_read_add] =  READ_BYTE;
+			uart_comm.TRANSMIT_DATA[data_high_bit_add]=0x00;
+			uart_comm.TRANSMIT_DATA[data_low_bit_add]= 0x00;
 				break;
 			
 			case UART_FRAME_INDEX_SET_MOTOR_STATUS:

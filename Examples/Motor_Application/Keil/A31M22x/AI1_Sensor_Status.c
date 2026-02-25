@@ -2,9 +2,9 @@
 #include "Bharat_Bijlee.h"
 #include "MODBUS_Status.h"
 #include "Application_Holding_Register.h"
+#include "DI1_Status.h"
 /**********GLOBLE VARIABLE*****************************/
 uint16_t g_Analog_input_10Volt;
-extern MODBUS_REGISTER_t Modbus_Register;
 extern Modbus_Parameter modbus_parameter;
 static uint32_t g_Temp_Pot_volt_factor=0;
 uint16_t g_Pot_voltage_filt;
@@ -32,7 +32,7 @@ static int ANALOG_SENSE_0_10_VOLT_RAW(void)                     //Sense Analog v
  *
  * @return Filtered ADC value
  */
-static int ANALOG_SENSE_0_10_VOLT_FILT(void)
+ int ANALOG_SENSE_0_10_VOLT_FILT(void)
 {
     /* Accumulate the difference between raw ADC input and filtered value
        to implement a low-pass (IIR) filter */
@@ -61,11 +61,12 @@ static int ANALOG_SENSE_0_10_VOLT_FILT(void)
  */
 int Volts_10(void)
 {
-    uint16_t Volts_10_value = 0;
-
+    uint16_t Ai1_rec_count = 0;
+	  float Volts_10_value = 0;
+		Ai1_rec_count = ANALOG_SENSE_0_10_VOLT_FILT();
     /* Scale the measured voltage using resistor divider ratio
        V_actual = V_measured × (R_IN + R_OUT) / R_OUT */
-    Volts_10_value =(g_AI1_Volts_Value * (R_IN + R_OUT)) / R_OUT;
+    Volts_10_value = (float)((Ai1_rec_count * V_BASE)/TOTAL_ADC_COUNT);
 
     /* Return compensated 0–10V voltage value */
     return Volts_10_value;
@@ -75,25 +76,26 @@ int Volts_10(void)
 
 float g_SLOPE=0,g_INTERCEPT=0;
 int g_AI1_Calculated_RPM_Temp = 0;
-uint16_t g_AI1_MIN_temp=0,g_AI1_MAX_temp=0,g_AI1_Calculated_RPM = 0;
-uint16_t g_AI1_MIN_SPEED = 0;
-uint16_t g_AI1_MAX_SPEED=0;
-uint16_t g_analog_temp = 0;
-uint16_t g_AI1_MIN_temp_percent = 0,g_AI1_MAX_temp_percent = 0;
+uint16_t g_AI1_Calculated_RPM = 0;
 uint16_t g_Ai1MinimumRunningSpeed = 0;
+uint16_t Min_Run_RPM = 0;
 /**
 Purpose :- ANALOG_CONTORL_MODE is caculate RPM according to ADC count and Lower and Upper RPM....
 */
 void ANALOG_CONTROL_MODE(void)
 {
-    uint16_t Min_Run_RPM = 0;
-
+		float g_AI1_MIN_temp,g_AI1_MAX_temp;
+	  uint16_t g_analog_temp = 0;
+		uint16_t g_AI1_MIN_temp_percent = 0,g_AI1_MAX_temp_percent = 0;
+		uint16_t g_AI1_MIN_SPEED = 0;
+		uint16_t g_AI1_MAX_SPEED=0;
+		uint16_t lowthreshold = 0,upperthreshold = 0;
     g_analog_temp = ANALOG_SENSE_0_10_VOLT_FILT();
 
     /* ---------- AI1 Min / Max ADC ---------- */
-    g_AI1_MIN_temp_percent = MODBUS_HOLDING_REGISTERS[HOLDING_AI1_MINIMUM_VALUE].actual_value * 10;
+    g_AI1_MIN_temp_percent = MODBUS_HOLDING_REGISTERS[HOLDING_AI1_MINIMUM_VALUE].actual_value;
     g_AI1_MIN_temp =(g_AI1_MIN_temp_percent * TOTAL_ADC_COUNT) / 100;
-    g_AI1_MAX_temp_percent = MODBUS_HOLDING_REGISTERS[HOLDING_AI1_MAXIMUM_VALUE].actual_value * 10;
+    g_AI1_MAX_temp_percent = MODBUS_HOLDING_REGISTERS[HOLDING_AI1_MAXIMUM_VALUE].actual_value;
     g_AI1_MAX_temp =(g_AI1_MAX_temp_percent * TOTAL_ADC_COUNT) / 100;
     g_AI1_MIN_SPEED = MODBUS_HOLDING_REGISTERS[HOLDING_MIN_SPEED].actual_value;
     g_AI1_MAX_SPEED = MODBUS_HOLDING_REGISTERS[HOLDING_MAXIMUM_SPEED].actual_value;
@@ -111,25 +113,25 @@ void ANALOG_CONTROL_MODE(void)
     g_INTERCEPT = g_AI1_MAX_SPEED - (g_SLOPE * g_AI1_MAX_temp);
 
     g_AI1_Calculated_RPM_Temp = (g_SLOPE * g_analog_temp) + g_INTERCEPT;
-
-
+    lowthreshold = g_AI1_MIN_temp + 30;
+    upperthreshold = g_AI1_MAX_temp - 30;
     /* ---------- Final Decision ---------- */
-    if (g_analog_temp < g_AI1_MIN_temp)
+    if ((g_analog_temp < g_AI1_MIN_temp)||(g_analog_temp < POTENIOMETER_LOW_VLAUE))
     {
         /* Below AI1 minimum input */
         g_AI1_Calculated_RPM = Min_Run_RPM;
     }
-    else if (g_analog_temp > g_AI1_MAX_temp_percent)
+    else if ((g_analog_temp > g_AI1_MAX_temp)||(g_analog_temp > POTENIOMETER_HIGH_VLAUE))
     {
         g_AI1_Calculated_RPM = g_AI1_MAX_SPEED;
     }
-    else 
+    else if((lowthreshold < g_analog_temp)&&(g_analog_temp < upperthreshold))
     {
         g_AI1_Calculated_RPM = g_AI1_Calculated_RPM_Temp;
         SYSTEM_DRIVE_EVENT.DRIVE_STATUS.ADC_AI1_EVENT_FLAG = 1;
     }
 
-    g_Fail_safe_status = MODBUS_HOLDING_REGISTERS[HOLDING_FAIL_SAFE_ON_OFF].actual_value;
+    g_Fail_safe_status = MODBUS_HOLDING_REGISTERS[HOLDING_Fail_FUNCTIONACTIVE].actual_value;
 }
 
 
@@ -144,15 +146,11 @@ void ANALOG_CONTORL_RPM_ENABLE(void)
 {
  uint16_t Fan_direction = 0,Target_Speed_Set = 0;
 	Fan_direction = FAN_ROTATION();
-	if((SYSTEM_DRIVE_EVENT.DRIVE_STATUS.ADC_AI1_EVENT_FLAG == 1)||(controlmode.ANALOG_FLAG_BIT == 1))    /* Check if analog control mode or ADC AI1 event is active */
+	if(controlmode.ANALOG_FLAG_BIT == 1)   /* Check if analog control mode or ADC AI1 event is active */
 	{
-		if(g_Fail_safe_status == 1)/* If fail-safe condition is active, override target speed */
-		{
-		Target_Speed_Set	= FailSafeControl();
-		}
-		else{
 			Target_Speed_Set = g_AI1_Calculated_RPM;    /* Normal operation: use RPM calculated from AI1 */
-		}
+	}
+	else{
 	}
 	
 	if(Fan_direction == 1)

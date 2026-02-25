@@ -19,7 +19,7 @@ InternalRpm_t InternalRPM;
 VdcFilt_t vdcfilt;
 
 BypassTMPMGMT_t BypassTmppmgmt;
-uint32_t g_Nodeaddress_Read = 0;
+uint16_t g_Nodeaddress_Read = 0,Flash_Nodeaddress;
 bool g_BYPASS_TMP_IGBT = 0,g_BYPASS_TMP_WINDING = 0;
 /**
  * @brief Get the target speed to use when Modbus signal is lost
@@ -75,34 +75,18 @@ int MINIMUM_SPEED(void)
  */
 int FAN_ROTATION(void)
 {
-	uint16_t Fan_Direction = 0,TargetRpm = 0;
+	uint16_t Fan_Direction = 0;
 	if(MODBUS_HOLDING_REGISTERS[HOLDING_FAN_ROTATION].actual_value == FORWARD_DIRECTION)
 	{
 		Fan_Direction = 0;    //Forward Direction
-//		TargetRpm = g_target_Speed;
 	}
 	else if(MODBUS_HOLDING_REGISTERS[HOLDING_FAN_ROTATION].actual_value == REVERSE_DIRECTION)
 	{
 		Fan_Direction = 1;		//Reverse Direction
-//		TargetRpm = g_target_Speed & 8000;
 	}
 	return Fan_Direction;
 }
 
-
-/**
- * @brief Set the switching frequency for the motor/fan drive
- *
- * This function sets a fixed switching frequency value and updates
- * the corresponding Modbus holding register. The switching frequency
- * typically controls the PWM frequency for motor inverter/drive.
- */
-void SWITCHING_FREQUENCY(void)
-{
-	uint16_t Switching_Frequency;
-	Switching_Frequency = 8000;
-	MODBUS_HOLDING_REGISTERS[HOLDING_SWITCHING_FREQUENCY].actual_value = Switching_Frequency;
-}
 
 /**
  * @brief Get internal preset RPM 1 from Modbus holding register
@@ -159,14 +143,10 @@ int SET_INTERNAL_RPM_3(void)
  */
 int ContorlBitSystem(void)
 {
-	uint16_t Modbus_Enable = 0,Set_Internal_Active = 0,TmpMGMT = 0;
+	uint16_t Set_Internal_Active = 0;
 	uint16_t Contorl_bit_Target_speed = 0;
-	Modbus_Enable = controlmode.MODBUS_FLAG_BIT;                            // Read Modbus enable flag
+	
 	Set_Internal_Active = MODBUS_HOLDING_REGISTERS[HOLDING_SET_INTERNAL_ACTIVE].actual_value;        // Read internal speed selection from Modbus holding register
-	
-	TmpMGMT = MODBUS_HOLDING_REGISTERS[HOLDING_DISABLE_TEMP_MANAGEMENT].actual_value;                   // Read temperature management bypass configuration from Modbus
-	
-	
 		switch(Set_Internal_Active)             // Determine target speed based on internal selection
 		{
 			case NO_SELECT:                    // No internal speed selected ? keep previous target speed
@@ -183,32 +163,8 @@ int ContorlBitSystem(void)
 			case SET_INTERNAL_SPEED_3:
 				Contorl_bit_Target_speed = SET_INTERNAL_RPM_3();
 				break;
-		}
-		
-		switch(TmpMGMT)                            // Temperature management bypass logic
-		{
-			case TmpMGMT_Disable:
-			g_BYPASS_TMP_IGBT = 0;
-			g_BYPASS_TMP_WINDING = 0;
-			break;
-
-			case BYPASS_TMP_IGBT:                 //Disable the IGBT Temperature Fault Forcelly
-			g_BYPASS_TMP_IGBT = 1;
-			g_BYPASS_TMP_WINDING = 0;
-			break;
-
-			case BYPASS_TMP_WINDING:               //Disable the Winding Temperature Fault Forcelly
-			g_BYPASS_TMP_WINDING = 1;
-			g_BYPASS_TMP_IGBT = 0;
-			break;
-
-			case BYPASS_TMP_BOTH:                  //Disable Both IGBT and Winding Temperature Fault Forcelly
-			g_BYPASS_TMP_IGBT = 1;
-			g_BYPASS_TMP_WINDING = 1;
-			break;
-		}
-		
-	g_target_Speed = Contorl_bit_Target_speed;              // Update global target speed variable
+		}      
+	return Contorl_bit_Target_speed;
 }
 
 
@@ -223,7 +179,8 @@ int ContorlBitSystem(void)
 void LED_MODE_INDICATION(void)
 {
 	uint8_t led_Check=0,Led_status = 0;
-	led_Check = MODBUS_HOLDING_REGISTERS[HOLDING_LED_MODE].actual_value;
+	led_Check = MODBUS_HOLDING_REGISTERS[HOLDING_LEDMODE].actual_value;
+
 	switch(led_Check)
 	{
 		case LED_OFF:
@@ -258,7 +215,7 @@ int FailSafeControl(void)
 	Fail_safe_MDirection = MODBUS_HOLDING_REGISTERS[HOLDING_FAIL_SAFE_RUNNING_DIRECTION].actual_value;
 	Fail_safe_speed = MODBUS_HOLDING_REGISTERS[HOLDING_FAIL_SAFE_FUNCTION_SET_SPEED].actual_value;
   Fail_safe_Source = MODBUS_HOLDING_REGISTERS[HOLDING_FAIL_SAFE_SOURCE].actual_value;
-  Fail_safe_Active_value = MODBUS_HOLDING_REGISTERS[HOLDING_FAIL_SAFE_ACTIVATE_SET_VALUE].actual_value;
+  Fail_safe_Active_value = MODBUS_HOLDING_REGISTERS[HOLDING_Fail_SAFE_ACTIVATE_AT_SET_VALUE].actual_value;
   g_actual_volts = Volts_10();
 		switch(Fail_safe_Source)                             // Determine if fail-safe condition is active
 		{
@@ -313,7 +270,7 @@ int FailSafeControl(void)
 void NodeAddresInit(void)
 {
 	
-	g_Nodeaddress_Read = Read_Flash_U32(HOLDING_NODEADDRESS_START_ADDR);
+	g_Nodeaddress_Read = Read_Flash_U32(HOLDING_REG_ACTUAL_START_ADDR);
 	
 	if((g_Nodeaddress_Read >= 1)&&(g_Nodeaddress_Read <= 247))
 	{
@@ -321,7 +278,7 @@ void NodeAddresInit(void)
 	}
 	else{
 		g_Nodeaddress_Read = 1;
-		Data_write_to_flash(HOLDING_NODEADDRESS_START_ADDR,1,(uint32_t *)&g_Nodeaddress_Read);
+	//	Data_write_to_flash(HOLDING_NODEADDRESS_START_ADDR,1,(uint16_t *)&g_Nodeaddress_Read);
 	}
-	MODBUS_HOLDING_REGISTERS[HOLDING_NODE_ADDRESS].actual_value = g_Nodeaddress_Read;
+	//MODBUS_HOLDING_REGISTERS[HOLDING_NODE_ADDRESS].actual_value = g_Nodeaddress_Read;
 }

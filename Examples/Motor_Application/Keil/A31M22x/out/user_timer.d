@@ -38,3 +38,6 @@
 .\out\user_timer.o: ..\..\..\..\Drivers\A31M22x\include\a31m22x_scu.h
 .\out\user_timer.o: ..\A31M22x\Digital_Pwm_Output.h
 .\out\user_timer.o: ..\..\..\..\Drivers\A31M22x\include\a31m22x_timer.h
+.\out\user_timer.o: Application_Input_Register.h
+.\out\user_timer.o: Fault_Status.h
+.\out\user_timer.o: Modbus_Status.h

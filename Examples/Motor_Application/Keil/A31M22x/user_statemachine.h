@@ -66,14 +66,13 @@ typedef union{
 	}DRIVE_STATUS;
 	uint16_t DRIVE_CHECK_STATUS;
 }SYSTEM_DRIVE_EVENT_t;
-
+extern float g_IPM_Temp,Winding_Temp;
 extern SYSTEM_DRIVE_EVENT_t SYSTEM_DRIVE_EVENT;
-
 void SENSOR_UPDATE_DATA(void);
 void STATE_MACHINE(void);
 void FAULT_EVENT(void);
 void EVENT_OCCUR_1_MS(void);
 void InputRegisterData(void);
 void MotorStatusCheck(void);
-void LoadPercentage(void);
+
 #endif

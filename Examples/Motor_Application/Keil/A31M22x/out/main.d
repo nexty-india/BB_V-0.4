@@ -41,5 +41,6 @@
 .\out\main.o: ..\..\..\..\Drivers\A31M22x\include\a31m22x_adc.h
 .\out\main.o: ..\..\a31m22x_libcfg.h
 .\out\main.o: ..\..\..\..\Drivers\A31M22x\include\a31m22x_spi.h
+.\out\main.o: ..\A31M22x\LVD_Status.h
 .\out\main.o: ..\A31M22x\DI1_Status.h
 .\out\main.o: ..\A31M22x\Fault_indication.h

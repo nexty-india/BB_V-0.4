@@ -75,6 +75,7 @@ volatile uint16_t my_time = 10;
 bool auto_time_calc_flag = 0;
 void ModbusStateMachine(void)
 {
+	
 	switch(Modbus_state)
 	{
 		/*--------------------------------------------------------------
@@ -125,7 +126,7 @@ void ModbusStateMachine(void)
 			g_Recieve_Flag = 0;				// Stop Receiving anymore data till the current data is successfully processed
 			data_logger.TOTAL_BYTES_RECEIVED = 0;
 			// Validate received Modbus frame
-			if((!ModbusDataValidCheck() == 1)&&(ModbusRxDataDecode() == 1))
+			if((ModbusDataValidCheck() == 1)&&(ModbusRxDataDecode() == 1))
 			{
 				// Decode and process received Modbus frame
 					Modbus_state = DATA_TO_BE_TRANSMITTED;
@@ -190,15 +191,15 @@ void ModbusStateMachine(void)
 
 
 
-/**
-*@brief Check NodeAddress Validation 
-*@return int
-*/
-int NodeValid(void)
-{
-	uint16_t NodeRec = 0;
-	NodeRec = data_logger.MODBUS_RECEIVED_BUFFER[SLAVE_ID];  
-}
+///**
+//*@brief Check NodeAddress Validation 
+//*@return int
+//*/
+//int NodeValid(void)
+//{
+//	uint16_t NodeRec = 0;
+//	NodeRec = data_logger.MODBUS_RECEIVED_BUFFER[SLAVE_ID];  
+//}
 
 /**
 * @brief This function validate the Received data frame 
@@ -207,19 +208,24 @@ int NodeValid(void)
 * @param none
 *
 */
+uint16_t Slave_id,test_var1;
 bool ModbusDataValidCheck(void)
 {
-	uint16_t Slave_id = 0,Functional_code = 0, Start_address = 0,Byte_count = 0,Quantity_register = 0,Flash_Nodeaddress = 0;
-	Slave_id = data_logger.MODBUS_RECEIVED_BUFFER[SLAVE_ID];  
+	uint16_t Functional_code = 0, Start_address = 0,Byte_count = 0,Quantity_register = 0;//,Flash_Nodeaddress = 0;Slave_id = 0,
+	Slave_id = data_logger.MODBUS_RECEIVED_BUFFER[SLAVE_ID_RX];  
 	Functional_code = data_logger.MODBUS_RECEIVED_BUFFER[FUNCTION_CODE_RX];
 	Start_address = ((data_logger.MODBUS_RECEIVED_BUFFER[START_ADDRESS_HIGH_RX]<<8)|data_logger.MODBUS_RECEIVED_BUFFER[START_ADDRESS_LOW_RX]);
 	Quantity_register = ((data_logger.MODBUS_RECEIVED_BUFFER[REGISTER_QUANTITY_HIGH_RX]<<8)|data_logger.MODBUS_RECEIVED_BUFFER[REGISTER_QUANTITY_LOW_RX]); 
 	Flash_Nodeaddress = MODBUS_HOLDING_REGISTERS[HOLDING_NODE_ADDRESS].actual_value;
-	if(Slave_id != Flash_Nodeaddress)   //Check slave ID
+	
+	if(Slave_id != g_Nodeaddress_Read)   //Check slave ID
 	{
+		test_var1 = 12;
 		return false;
 	}
 	else{
+		test_var1 = 234;
+		return true;
 	}
 	
 	if((Functional_code != READ_HOLDING_REGISTER)||(Functional_code != READ_INPUT_REGISTER)||(Functional_code != WRITE_SINGLE_REGISTER)||(Functional_code != WRITE_MULTIPLE_REGISTER))   //check function code
@@ -227,6 +233,7 @@ bool ModbusDataValidCheck(void)
 		return false;
 	}
 	else{
+		return true;
 	}
 			
 	if(!(ADDRESS_MIN_RANGE <= Start_address)&&(!(Start_address < ADDRESS_MAX_RANGE)))  //CHeck address range with limit
@@ -234,6 +241,7 @@ bool ModbusDataValidCheck(void)
 		return false;
 	}
 	else{
+		return true;
 	}
 	
 	
@@ -244,6 +252,7 @@ bool ModbusDataValidCheck(void)
 		{
 			return false;
 		}else{
+			return true;
 		}
 	}
 	else{}
@@ -256,6 +265,7 @@ bool ModbusDataValidCheck(void)
 			return false;
 		}
 		else{
+			return true;
 		}
 	}else{
 	}
@@ -266,6 +276,7 @@ bool ModbusDataValidCheck(void)
 		{
 			return false;
 		}else{
+			return true;
 		}
 	 
 }
@@ -281,7 +292,7 @@ bool ModbusDataValidCheck(void)
 */
 bool DataReceivedValid(void)
 {
-	uint16_t byte_count=0,Functional_code = 0,Start_address = 0,Quantity_register=0;
+	uint16_t Functional_code = 0,Start_address = 0,Quantity_register=0;
 	Functional_code = data_logger.MODBUS_RECEIVED_BUFFER[FUNCTION_CODE_RX];
 	Start_address = ((data_logger.MODBUS_RECEIVED_BUFFER[START_ADDRESS_HIGH_RX]<<8)|data_logger.MODBUS_RECEIVED_BUFFER[START_ADDRESS_LOW_RX]);
 	Quantity_register = ((data_logger.MODBUS_RECEIVED_BUFFER[REGISTER_QUANTITY_HIGH_RX]<<8)|data_logger.MODBUS_RECEIVED_BUFFER[REGISTER_QUANTITY_LOW_RX]); 
@@ -363,6 +374,7 @@ bool ModbusRxDataDecode(void)
 		crc_low = data_logger.MODBUS_RECEIVED_BUFFER[CRC_LOW_RX];	
 		Modbus_Decode_Data.Input_Register_receive_Crc =  (crc_high<<8)|(crc_low);
 		g_Rx_rec_len = 8;
+		return true;
 	}
 	else if(Modbus_Decode_Data.Function_Code == READ_HOLDING_REGISTER)
 	{
@@ -373,6 +385,7 @@ bool ModbusRxDataDecode(void)
 		crc_low = data_logger.MODBUS_RECEIVED_BUFFER[CRC_LOW_RX];	
 		Modbus_Decode_Data.Holding_Register_receive_Crc  = (crc_high<<8)|(crc_low);
 		g_Rx_rec_len = 8;
+		return true;
 	}
 	/*  - **WRITE_MULTIPLE_REGISTER:**
 	*   - Extracts register quantity, byte count, data bytes, and CRC.
@@ -394,6 +407,7 @@ bool ModbusRxDataDecode(void)
 		crc_low = data_logger.MODBUS_RECEIVED_BUFFER[g_data_rx+8];
 		Modbus_Decode_Data.Write_Multiple_Register_receive_Crc = (crc_high<<8)|(crc_low);
 		g_Rx_rec_len = 7+Modbus_Decode_Data.QUANTITY_REGISTR_RECEIVED+2;
+		return true;
 	}
 	/*	 **WRITE_SINGLE_REGISTER:**
 	*         - Extracts single register value and CRC.
@@ -407,6 +421,10 @@ bool ModbusRxDataDecode(void)
 		crc_low = data_logger.MODBUS_RECEIVED_BUFFER[CRC_LOW_RX];
 		Modbus_Decode_Data.Write_Single_Register_received_Crc = (crc_high<<8)|(crc_low);
 		g_Rx_rec_len = 8;
+		return true;
+	}
+	else{
+		return false;
 	}
 }
 
@@ -427,7 +445,6 @@ bool ModbusRxDataDecode(void)
  */
 bool CheckTransmitValidData(void)
 {
-	uint16_t byte_count = 0;
 	uint16_t Functional_code = 0;
 	uint16_t Start_address = 0;
 	uint16_t Quantity_register = 0;

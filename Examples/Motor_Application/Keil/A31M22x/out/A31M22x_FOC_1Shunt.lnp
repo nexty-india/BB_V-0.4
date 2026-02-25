@@ -25,7 +25,6 @@
 ".\out\modbus_holding_register.o"
 ".\out\application_input_register.o"
 ".\out\application_holding_register.o"
-".\out\modbus_error.o"
 ".\out\di1_status.o"
 ".\out\ai1_sensor_status.o"
 ".\out\pid_sensor_status.o"
@@ -35,6 +34,7 @@
 ".\out\default_values.o"
 ".\out\relay_status.o"
 ".\out\suppression_setting.o"
+".\out\lvd_status.o"
 --strict --scatter ".\out\A31M22x_FOC_1Shunt.sct"
 --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers

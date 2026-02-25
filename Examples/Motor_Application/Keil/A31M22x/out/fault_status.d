@@ -41,3 +41,5 @@
 .\out\fault_status.o: ..\..\..\..\Drivers\A31M22x\include\a31m22x_timer.h
 .\out\fault_status.o: Modbus_Status.h
 .\out\fault_status.o: Application_Holding_Register.h
+.\out\fault_status.o: DI1_Status.h
+.\out\fault_status.o: Application_Input_Register.h

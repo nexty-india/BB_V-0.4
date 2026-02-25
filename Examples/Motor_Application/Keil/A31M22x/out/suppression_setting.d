@@ -49,3 +49,4 @@
 .\out\suppression_setting.o: AI1_Sensor_Status.h
 .\out\suppression_setting.o: Application_Holding_Register.h
 .\out\suppression_setting.o: Application_Input_Register.h
+.\out\suppression_setting.o: Fault_Status.h

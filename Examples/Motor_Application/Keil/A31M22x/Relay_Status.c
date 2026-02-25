@@ -36,7 +36,7 @@ void K1FunctionSetting(void)
 	Fault_Count = modbus_parameter.MODBUS_FAULT_STATUS;
 	uint16_t K1_setting = 0;
 	// Read K1 function setting from Modbus holding register
-	K1_setting = MODBUS_HOLDING_REGISTERS[HOLDING_K1_FUNCTION].actual_value;
+	K1_setting = MODBUS_HOLDING_REGISTERS[HOLDING_K1FUNCITON].actual_value;
 	
 	if(K1_setting == 1)                       // Check if K1 function is enabled
 	{

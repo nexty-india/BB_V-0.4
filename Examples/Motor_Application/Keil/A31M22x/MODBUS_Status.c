@@ -7,12 +7,11 @@
 #include "Application_Holding_Register.h"
 #include "Modbus_Comm.h"
 #include "AI1_Sensor_Status.h"
-
-extern MODBUS_REGISTER_t Modbus_Register;
-
+#include "Di1_Status.h"
+#include "Fault_Status.h"
 MOTOR_COMM_MODE motor_comm_mode = MODBUS_W_R_MODE;
-uint16_t Control_mode = 0;
 uint16_t g_target_Speed;
+uint8_t Control_mode = 0;
 /**
  * @brief  Selects control mode based on Modbus configuration.
  *         This function runs every 1 ms.
@@ -24,6 +23,7 @@ uint16_t g_target_Speed;
  */
 void CONTROL_MODE_SELECT(void)    //Run at every 1 milliseconds
 {
+	
 	Control_mode = MODBUS_HOLDING_REGISTERS[HOLDING_CONTROL_MODE].actual_value;
 	if(Control_mode == PID_Flag)                 /* -------- Set PID control flag -------- */
 	{
@@ -52,7 +52,9 @@ void CONTROL_MODE_SELECT(void)    //Run at every 1 milliseconds
 		controlmode.ANALOG_FLAG_BIT = 0;
 	}
 	
-	ControlModeOperation();
+	
+	if(g_Motor_Status == 1){
+	ControlModeOperation();}else{}
 }
 
 
@@ -108,38 +110,50 @@ void READ_RPM_SET_STATUS(void)
  */
 void SET_TARGET_RPM_FROM_MODBUS(void)
 {
-	uint16_t Modbus_Target_Rpm = 0,Maximum_Rpm = 0,TargetrpmSet = 0;
-	uint16_t ControlBit_Enable = 0,fan_direction = 0;
-	bool Modbus_Fault_occur = 0;
-	Modbus_Target_Rpm = MODBUS_HOLDING_REGISTERS[HOLDING_TARGET_SPEED_FROM_MODBUS].actual_value;
-	Maximum_Rpm = MODBUS_HOLDING_REGISTERS[HOLDING_MAXIMUM_SPEED].actual_value;
-	ControlBit_Enable = MODBUS_HOLDING_REGISTERS[HOLDING_CONTROL_BITS].actual_value;
-  fan_direction = FAN_ROTATION();
-	Modbus_Fault_occur = MODBUS_FAULT_OCCUR;
-	
-	if(Modbus_Fault_occur == true)                                /* -------- Target RPM Selection -------- */
-	{
-		TargetrpmSet = SET_SPEED_MODBUS_SIGNAL_LOSS_MODE();
-	}
-	else if(ControlBit_Enable == 1)
-	{
-		TargetrpmSet = ContorlBitSystem();                            /* Control bit override mode */
-	}
-	else
-	{ 
-		if(Modbus_Target_Rpm < Maximum_Rpm)                           /* Normal Modbus RPM control with limit check */
-			TargetrpmSet = Modbus_Target_Rpm*10; 
-		else
-			TargetrpmSet = Maximum_Rpm;
-	}
-	 
-	if(fan_direction == 1)                    //anticlock direction is activate
-	{
-		TargetrpmSet |= 0x8000; 
-	}
-	
-	g_target_Speed = TargetrpmSet;
+    uint16_t modbus_rpm;
+    uint16_t max_rpm;
+    uint16_t target_rpm;
+    uint16_t control_bit;
+    uint16_t fan_direction;
+
+    bool modbus_fault;
+
+    /* Read required parameters */
+    modbus_rpm   = MODBUS_HOLDING_REGISTERS[HOLDING_TARGET_SPEED_FROM_MODBUS].actual_value;
+    max_rpm      = MODBUS_HOLDING_REGISTERS[HOLDING_MAXIMUM_SPEED].actual_value;
+    control_bit  = MODBUS_HOLDING_REGISTERS[HOLDING_CONTROL_BITS].actual_value;
+    fan_direction = FAN_ROTATION();
+    modbus_fault = MODBUS_FAULT_OCCUR;
+
+    /* -------- Target RPM Selection -------- */
+    if (modbus_fault == true)
+    {
+        target_rpm = SET_SPEED_MODBUS_SIGNAL_LOSS_MODE();
+    }
+    else if (control_bit == 1)
+    {
+        target_rpm = ContorlBitSystem();
+    }
+    else
+    {
+        target_rpm = modbus_rpm;
+    }
+
+    /* -------- Maximum RPM Limitation -------- */
+    if (target_rpm > max_rpm)
+    {
+        target_rpm = max_rpm;
+    }
+
+    /* -------- Direction Bit Handling -------- */
+    if (fan_direction == 1)   // Anticlockwise direction
+    {
+        target_rpm |= 0x8000;
+    }
+
+    g_target_Speed = target_rpm;
 }
+
 
 /**
  * @brief Check Modbus status and handle motor RPM updates
@@ -197,9 +211,19 @@ void MODBUS_EVENT_OCCURANCE(void)
  * The Modbus register is later used by the motor control logic
  * or external Modbus master for speed reference.
  */
+uint16_t User_Set_Speed = 0;
 void SET_TARGET_SPEED_TO_MOTOR(void)
 {
-	uint16_t User_Set_Speed = 0;
+	
 	User_Set_Speed = g_target_Speed;
+	
+	if(g_per_off == 1)
+	{
+		modbus_parameter.MODBUS_TARGET_SPEED = User_Set_Speed;
+	}
+	
+	if((g_Motor_Status == 1)||(g_FireEnableMode))
 	modbus_parameter.MODBUS_TARGET_SPEED = User_Set_Speed;
+	else
+		modbus_parameter.MODBUS_TARGET_SPEED = User_Set_Speed;
 }

@@ -39,6 +39,8 @@
 .\out\application_input_register.o: ..\..\..\..\Drivers\A31M22x\include\a31m22x_mpwm.h
 .\out\application_input_register.o: ..\..\..\..\Drivers\A31M22x\include\a31m22x_scu.h
 .\out\application_input_register.o: ..\A31M22x\Digital_Pwm_Output.h
+.\out\application_input_register.o: Fault_Status.h
+.\out\application_input_register.o: Modbus_Status.h
 .\out\application_input_register.o: Bharat_Bijlee.h
 .\out\application_input_register.o: Flash_Writing.h
 .\out\application_input_register.o: ..\..\..\..\Drivers\A31M22x\include\A31M22x_cfmc.h

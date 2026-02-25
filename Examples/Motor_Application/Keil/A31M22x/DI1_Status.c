@@ -6,10 +6,11 @@
 #include "Application_Holding_Register.h"
 /**/
 extern Modbus_Parameter modbus_parameter;
-extern MODBUS_REGISTER_t Modbus_Register;
 uint16_t DI1_counter,DI2_counter;
 bool DI1_STATUS_CHECK = 0,DI2_STATUS_CHECK;
 bool DI1_STATUS_ENABLE,DI2_STATUS_ENABLE;
+bool g_Motor_Status = 0,g_FireEnableMode = 0,Check_Di1;
+
 /**
  * @brief  Selects operating mode and updates target RPM.
  *         This function is executed every 1 ms.
@@ -19,47 +20,76 @@ bool DI1_STATUS_ENABLE,DI2_STATUS_ENABLE;
  *   2. DI1 manual control
  *   3. Stop condition
  */
+bool  di1_pressed;
 void MODE_SELECTION(void)    // Run every 1 ms
 {
-	uint16_t g_Fire_Status = 0;
-	uint16_t fire_alarm = 0;
-	uint8_t  di1_status = 0;
-	uint8_t  di1_pressed = 0;
-	/* Read inputs */
-	di1_status    = DI1_MOTOR_STATUS();
-	di1_pressed   = DI1_ENABLE();
-	g_Fire_Status = DI2_ENABLE();
+	  
+	bool fire_alarm;
+	bool fire_source;
+	bool fire_status;
+	bool di1_status;
+	
+	/* -------- Read Inputs -------- */
+	di1_status  = DI1_MOTOR_STATUS();
+	di1_pressed = DI1_ENABLE();
+	fire_status = DI2_ENABLE();
 
-	fire_alarm = MODBUS_HOLDING_REGISTERS[HOLDING_FIRE_ALARM_ACTIVATE].actual_value;
-	MODBUS_INPUT_REGISTERS[INPUT_FIRE_STATUS].actual_value = fire_alarm;
+	fire_alarm  = MODBUS_HOLDING_REGISTERS[HOLDING_FIRE_ALARM_ACTIVATE].actual_value;
+	fire_source = MODBUS_HOLDING_REGISTERS[HOLDING_FIRE_ALARM_MODE_SOURCE].actual_value;   //0:- DI2 Mode , 1:- Modbus mode
 
-	/* ---------------- FIRE MODE ---------------- */
-	if (fire_alarm == 1)
+	
+	/* -------- FIRE MODE (Highest Priority) -------- */
+	if (fire_alarm == 1U)
 	{
-			if ((g_Fire_Status == 1) ||(controlmode.MODBUS_FLAG_BIT == 1))    /* Fire mode enabled via DI2 or Modbus command */
+			/* Fire source = DI input */
+			if ((fire_source == 0U) && (fire_status == 1U))
 			{
-					FIRE_STATUS();      // sets speed internally
-					return;             
+				g_FireEnableMode = 1;
+				g_Motor_Status = 0;
+				FIRE_STATUS();
+				return;   // ?? BLOCK everything else
 			}
-	}
+			else{
+				Check_Di1 = 1;
+			}
 
-	/* ---------------- DI1 MODE ---------------- */
-	if (di1_status == 1)
+
+			/* Fire source = Modbus */
+			if ((fire_source == 1U) && (controlmode.MODBUS_FLAG_BIT == 1U))
+			{
+				g_FireEnableMode = 1;
+				g_Motor_Status = 0;
+				FIRE_STATUS();
+				return;   // ?? BLOCK everything else
+			}
+			else{
+				Check_Di1 = 1;
+			}
+	}else{Check_Di1 = 1;}
+
+	/* -------- DI1 MODE -------- */
+	if ((di1_status == 1U)&&(Check_Di1))
 	{
-		if(di1_pressed == 1)
-		{
-			DI1_SWITCH_RPM_ENABLE();  // sets g_target_Speed
-		}
-		else{
-			 g_target_Speed = 0;
-		}
+		Check_Di1 = 0;
+		g_FireEnableMode = 0;
+			if (di1_pressed == 1)
+			{
+					g_Motor_Status = 1;
+			}
+			else
+			{
+				g_Motor_Status = 0;
+					g_target_Speed = 0U;
+			}
 	}
 	else
 	{
-			/* ---------------- STOP ---------------- */
-			g_target_Speed = 0;
+			/* -------- RUN Motor -------- */
+			g_Motor_Status = 1;
+		g_FireEnableMode = 0;
 	}
 }
+
 
 
 
@@ -73,16 +103,16 @@ void MODE_SELECTION(void)    // Run every 1 ms
 int DI1_MOTOR_STATUS(void)
 {
 	bool DI1_check = 0;
-	uint16_t MODBUS_DI1_STATUS = 0 ;
+
 	DI1_check = MODBUS_HOLDING_REGISTERS[HOLDING_DI1_FUNCTION].actual_value;    /* Read DI1 function enable status from Modbus holding register */
 	
 	if(DI1_check == 1)                 /* Return DI1 status */        
 	{
-		return MODBUS_DI1_STATUS = 1;
+		return true;
 	}
 	else 
 	{
-		return MODBUS_DI1_STATUS = 0;
+		return false;
 	}
 }
 
@@ -126,20 +156,6 @@ bool DI1_ENABLE(void)
 		return 	SYSTEM_DRIVE_EVENT.DRIVE_STATUS.DI1_STATUS_EVENT_FLAG = 0;
 	}
 }
-
-
-/**
- * @brief  Enables RPM control via DI1 switch.
- *         Delegates RPM selection to the control mode handler.
- *
- * This function is called when DI1 is active and validated.
- */
-void DI1_SWITCH_RPM_ENABLE(void)
-{
-	CONTROL_MODE_SELECT();
-}
-
-
 
 /**
  * @brief  Reads DI2 GPIO input and validates Fire input
@@ -191,19 +207,16 @@ bool DI2_ENABLE(void)
  *   2 = Run forward at fire alarm speed
  *   3 = Run reverse at fire alarm speed
  */
+
+uint16_t   Target_DI2_speed = 0;
+
 void FIRE_STATUS(void)
-{
-    uint16_t Fan_direction = 0;
-    int16_t  Firealaram_Target_Speed = 0;
-    int16_t  Target_DI2_speed = 0;
-    int16_t  FireMode = 0;
-
-    /* Read fire-related parameters from Modbus holding registers */
-    Fan_direction = MODBUS_HOLDING_REGISTERS[HOLDING_FAN_ROTATION].actual_value;
-
+{	
+	uint16_t   FireMode = 0;
+	uint16_t   Firealaram_Target_Speed = 0;
     Firealaram_Target_Speed = MODBUS_HOLDING_REGISTERS[HOLDING_SET_SPEED_IN_FIRE_ALARAM_MODE].actual_value;
 
-    FireMode = MODBUS_HOLDING_REGISTERS[HOLDING_RESERVED_25].actual_value;
+    FireMode = MODBUS_HOLDING_REGISTERS[HOLDING_FIRE_ALARM_CONTROL_SOURCE].actual_value;
 
     /* -------- Fire Mode Decision -------- */
     if (FireMode == 1)
